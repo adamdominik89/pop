@@ -1,0 +1,10 @@
+.a-button {
+  height: 50px; }
+
+.o-buttons {
+  background-color: lightgray;
+  width: 100%;
+  height: 100px; }
+
+#app {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; }

@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <div class="o-buttons">
+      <button class="a-button">Towary</button>
+      <button>Produkcja</button>
+      <button>Raporty</button>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -11,13 +15,6 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style src="../src/frontend/style/css/index.css">
+
 </style>
