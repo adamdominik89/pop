@@ -2,8 +2,8 @@
   <div id="app">
     <div class="o-buttons">
       <button class="a-button">Towary</button>
-      <button>Produkcja</button>
-      <button>Raporty</button>
+      <button class="a-button">Produkcja</button>
+      <button class="a-button">Raporty</button>
     </div>
     <router-view/>
   </div>
