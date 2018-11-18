@@ -1,11 +1,17 @@
 <template>
   <div id="app">
     <div class="o-buttons">
-      <button class="a-button">Towary</button>
-      <button class="a-button">Produkcja</button>
-      <button class="a-button">Raporty</button>
+      <div class="a-button-container">
+        <button class="a-button">Towary</button>
+      </div>
+      <div class="a-button-container">
+        <button class="a-button">Produkcja</button>
+      </div>
+      <div class="a-button-container">
+        <button class="a-button">Raporty</button>
+      </div>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -15,6 +21,4 @@ export default {
 }
 </script>
 
-<style src="../src/frontend/style/css/index.css">
-
-</style>
+<style src="../src/frontend/style/css/index.css"></style>
