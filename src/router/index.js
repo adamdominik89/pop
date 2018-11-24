@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '../frontend/components/HelloWorld'
+import main from '../frontend/components/main'
 import Stock from '../frontend/components/pages/stock'
 import Production from '../frontend/components/pages/production'
 import Reports from '../frontend/components/pages/reports'
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld,
+      name: 'main',
+      component: main,
     },
     {
       path: '/stock',

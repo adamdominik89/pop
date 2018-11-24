@@ -34,11 +34,8 @@ export default {
       this.$router.push('/production')
     },
     go_to_reports () {
-
       this.$router.push('/reports')
     },
-
-
   }
 }
 </script>
