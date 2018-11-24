@@ -1,17 +1,15 @@
 <template>
-  <div class="hello">
-
+  <div class="o-data-container">
+    towary
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+  name: 'Stock',
+  data: () => ({
+
+  })
 }
 </script>
 
