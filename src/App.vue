@@ -10,10 +10,11 @@
       <div class="a-button-container">
         <button class="a-button" @click="go_to_reports">Raporty</button>
       </div>
-      <div class="a-user-container">
-        Witaj: {{user}}
-        <router-link to="/">{{log_out}}</router-link> {{is_logged}}
-      </div>
+
+    </div>
+    <div class="a-user-container">
+      Witaj: {{user}}
+      <router-link to="/">{{log_out}}</router-link> {{is_logged}}
     </div>
     <router-view/>
   </div>

@@ -1,20 +1,22 @@
 <template>
   <div class="o-data-container">
     <div class="o-login-container">
-      Zaloguj sie
 
       <div class="m-single-container">
         <div class="m-user">
           <label class="a-label f-login">Login:
-          <input type="text"/></label>
+          <input class="a-input" type="text"/></label>
         </div>
       </div>
       <div class="m-single-container">
         <div class="m-password">
           <label>Hasło:
-          <input type="text"/>
+          <input class="a-input" type="text"/>
           </label>
         </div>
+      </div>
+      <div class="m-login-title">
+        <button>zaloguj się</button>
       </div>
     </div>
   </div>
