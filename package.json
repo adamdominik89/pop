@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -91,7 +92,8 @@
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0",
     "node-sass": "^4.10.0",
-    "node-sass-glob-importer": "^5.2.0"
+    "node-sass-glob-importer": "^5.2.0",
+    "vuex": "^3.0.1"
   },
   "engines": {
     "node": ">= 6.0.0",

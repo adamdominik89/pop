@@ -11,7 +11,8 @@
         <button class="a-button" @click="go_to_reports">Raporty</button>
       </div>
       <div class="a-user-container">
-        Witaj: {{user}} {{log_out}}
+        Witaj: {{user}}
+        <router-link to="/">{{log_out}}</router-link> {{is_logged}}
       </div>
     </div>
     <router-view/>
@@ -19,6 +20,9 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import {mapState} from 'vuex'
+
 export default {
   name: 'App',
   data: () => ({
@@ -26,6 +30,9 @@ export default {
     log_out: 'wyloguj'
 
   }),
+  computed: {
+    ...mapState('frontend', ['is_logged'])
+  },
   methods: {
     go_to_stock () {
       this.$router.push('/stock')
@@ -35,7 +42,7 @@ export default {
     },
     go_to_reports () {
       this.$router.push('/reports')
-    },
+    }
   }
 }
 </script>
