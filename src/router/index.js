@@ -12,23 +12,23 @@ export default new Router({
     {
       path: '/',
       name: 'main',
-      component: main,
+      component: main
     },
     {
       path: '/stock',
       name: 'stock',
-      component: Stock,
+      component: Stock
 
     },
     {
       path: '/production',
       name: 'production',
-      component: Production,
+      component: Production
     },
     {
       path: '/reports',
       name: 'reports',
-      component: Reports,
+      component: Reports
     }
   ]
 })

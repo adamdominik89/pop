@@ -14,7 +14,8 @@
     </div>
     <div class="a-user-container">
       Witaj: {{user}}
-      <router-link to="/">{{log_out}}</router-link> {{is_logged}}
+      <router-link to="/">{{log_out}}</router-link>
+      {{is_logged}}
     </div>
     <router-view/>
   </div>

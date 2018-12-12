@@ -3,5 +3,5 @@ module.exports = {
   state: {
     is_logged: false
   },
-  mutations: {},
+  mutations: {}
 }

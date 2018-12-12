@@ -11,12 +11,12 @@
       <div class="m-single-container">
         <div class="m-password">
           <label>Hasło:
-          <input class="a-input" type="text"/>
+          <input class="a-input" type="password"/>
           </label>
         </div>
       </div>
       <div class="m-login-title">
-        <button>zaloguj się</button>
+        <button @click="log_in">zaloguj się</button>
       </div>
     </div>
   </div>
@@ -29,7 +29,11 @@ export default {
   computed: {},
 
   methods: {
+  log_in(){
+    // kontrola loginu i hasla
+    this.$router.push('/stock')
 
+  },
   },
 
 }
