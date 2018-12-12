@@ -1,15 +1,39 @@
 <template>
   <div class="o-data-container">
-    towary
+    <page-data title="Towary">
+      <div class="a-button-container f-single">
+        <button class="a-button f-deep-menu"
+                @click="go_to">Przyjęcie towaru
+        </button>
+      </div>
+      <div class="a-button-container f-single">
+        <button class="a-button f-deep-menu"
+                @click="go_to">Stany towarów
+        </button>
+      </div>
+    </page-data>
   </div>
 </template>
 
 <script>
+import PageData from '../templates/page-data'
+
 export default {
   name: 'Stock',
+  components: {PageData},
   data: () => ({
-
-  })
+    links: [
+      {
+        to: '/stock/actual_stock',
+        label: 'Przyjęcie towaru',
+      }],
+  }),
+  methods: {
+    go_to () {
+      this.$router.push()
+      console.log('dupa')
+    }
+  }
 }
 </script>
 

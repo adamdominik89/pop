@@ -1,8 +1,42 @@
+.a-button {
+  font-size: 14px; }
+
+.t-title {
+  font-size: 16px; }
+
+.a-button.f-deep-menu, .t-title {
+  font-weight: bold; }
+
+.a-button {
+  width: 150px;
+  height: 32px;
+  padding: 2px 15px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #4c4c4c;
+  color: white;
+  border: solid 1px #4c4c4c;
+  outline: none; }
+  .a-button:hover {
+    background-color: white;
+    color: #4c4c4c;
+    border: solid 1px; }
+
 .a-button-container {
   margin-right: 25px;
   display: inline-block; }
   .a-button-container:nth-child(n+3) {
     margin-right: 0; }
+
+.a-button-container.f-single {
+  width: 300px;
+  margin: 0; }
+
+.a-button.f-deep-menu {
+  width: 250px;
+  height: 40px;
+  margin: 0;
+  padding: 10px; }
 
 .a-button {
   height: 50px;
@@ -44,3 +78,13 @@ body {
 
 #app {
   font-family: 'Source Sans Pro', sans-serif; }
+
+.t-data {
+  width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+
+.t-title {
+  height: 50px;
+  padding-left: 20px; }

@@ -1,14 +1,12 @@
 <template>
   <div class="o-data-container">
     produkcja
-
-
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Stock',
+  name: 'actual-stock',
   data: () => ({})
 }
 </script>
