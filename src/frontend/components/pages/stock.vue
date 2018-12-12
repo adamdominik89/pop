@@ -1,16 +1,14 @@
 <template>
   <div class="o-data-container">
     <page-data title="Towary">
-      <div class="a-button-container f-single">
+      <div class="a-button-container f-single"
+      v-for="link in links">
         <button class="a-button f-deep-menu"
-                @click="go_to">Przyjęcie towaru
+                @click="go_to(link.to)">{{link.label}}
         </button>
       </div>
-      <div class="a-button-container f-single">
-        <button class="a-button f-deep-menu"
-                @click="go_to">Stany towarów
-        </button>
-      </div>
+
+
     </page-data>
   </div>
 </template>
@@ -25,13 +23,18 @@ export default {
     links: [
       {
         to: '/stock/actual_stock',
-        label: 'Przyjęcie towaru',
-      }],
+        label: 'Stany towarów'
+      },
+      {
+        to: '/stock/recive_goods',
+        label: 'Przyjęcie towaru'
+
+      }]
   }),
   methods: {
-    go_to () {
-      this.$router.push()
-      console.log('dupa')
+    go_to (link) {
+      console.log(link)
+      this.$router.push(link)
     }
   }
 }

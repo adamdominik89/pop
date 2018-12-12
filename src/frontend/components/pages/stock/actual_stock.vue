@@ -1,12 +1,16 @@
 <template>
   <div class="o-data-container">
-    produkcja
+    <page-data title="Stany towarów">
+      tabelka z aktualnie posiadanymi towarami
+    </page-data>
   </div>
 </template>
 
 <script>
+import PageData from '../../templates/page-data'
 export default {
   name: 'actual-stock',
+  components: {PageData},
   data: () => ({})
 }
 </script>

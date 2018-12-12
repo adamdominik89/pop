@@ -5,6 +5,7 @@ import Stock from '../frontend/components/pages/stock'
 import Production from '../frontend/components/pages/production'
 import Reports from '../frontend/components/pages/reports'
 import ActualStock from '../frontend/components/pages/stock/actual_stock'
+import ReciveGoods from '../frontend/components/pages/stock/recive_goods'
 
 Vue.use(Router)
 
@@ -34,7 +35,12 @@ export default new Router({
     {
       path: '/stock/actual_stock',
       name: 'actual_stock',
-      component: ActualStock,
+      component: ActualStock
+    },
+    {
+      path: '/stock/recive_goods',
+      name: 'actual_stock',
+      component: ReciveGoods
     }
   ]
 })
