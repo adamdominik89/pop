@@ -1,21 +1,21 @@
 <template>
   <div class="o-data-container">
-    <page-data title="Stany towarów">
+    <page-table title="Stany towarów">
       <vue-good-table
         :columns="columns"
         :rows="rows"
         :groupOptions="{enabled: true}"
       ></vue-good-table>
-    </page-data>
+    </page-table>
   </div>
 </template>
 
 <script>
-import PageData from '../../templates/page-data'
+import PageTable from '../../templates/page-table'
 import { VueGoodTable } from 'vue-good-table'
 export default {
   name: 'actual-stock',
-  components: {PageData, VueGoodTable},
+  components: {VueGoodTable, PageTable},
   data: () => ({
     columns: [ {
       label: 'Numer partii',
@@ -44,6 +44,19 @@ export default {
         },
         {
           part_number: '21/01/2018', quantity: 4000, best_before: '10-12-2020', producer: 'mlyn xyz'
+        }
+      ]
+    },
+    {
+      mode: 'span',
+      label: 'Cukier',
+      html: false,
+      children: [
+        {
+          part_number: '100/2019', quantity: 6550, best_before: '10-12-2018', producer: 'Cukrowania z'
+        },
+        {
+          part_number: '21/01/2018', quantity: 4000, best_before: '10-12-2020', producer: 'Cukrownia b'
         }
       ]
     }]

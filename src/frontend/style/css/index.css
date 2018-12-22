@@ -86,6 +86,9 @@ body {
   margin-right: auto;
   text-align: center; }
 
+.t-data.f-table {
+  width: 900px; }
+
 .t-title {
   height: 50px;
   padding-left: 20px; }
