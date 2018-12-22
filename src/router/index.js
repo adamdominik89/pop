@@ -10,6 +10,7 @@ import Plan from '../frontend/components/pages/production/plan'
 import Recipes from '../frontend/components/pages/production/recipes'
 
 import Reports from '../frontend/components/pages/reports'
+import TechnologyCards from '../frontend/components/pages/reports/technology-cards'
 
 import ActualStock from '../frontend/components/pages/stock/actual_stock'
 import ReciveGoods from '../frontend/components/pages/stock/recive_goods'
@@ -59,6 +60,11 @@ export default new Router({
       path: '/reports',
       name: 'reports',
       component: Reports
+    },
+    {
+      path: '/reports/technology_cards',
+      name: 'technology_cards',
+      component: TechnologyCards
     },
     {
       path: '/stock/actual_stock',
