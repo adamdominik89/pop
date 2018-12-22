@@ -1,6 +1,6 @@
 <template>
   <div class="o-data-container">
-    <page-data title="Towary">
+    <page-data title="Produkcja">
       <div class="a-button-container f-single"
            v-for="(link, key) in links"
           :key="key"
@@ -31,16 +31,22 @@ export default {
         label: 'Dodawanie nowej receptury'
       },
       {
-        to: '/production/production_plan',
+        to: '/production/plan',
         label: 'Planowanie produkcji'
       },
       {
-        to: '/production/production',
+        to: '/production/deep',
         label: 'Produkcja'
       }
     ]
 
-  })
+  }),
+  methods: {
+    go_to (link) {
+      console.log(link)
+      this.$router.push(link)
+    }
+  }
 }
 </script>
 
