@@ -14,7 +14,7 @@ export default {
   name: 'page-data',
   data: () => ({
   }),
-  props: ['title'],
+  props: ['title']
 }
 </script>
 

@@ -39,7 +39,7 @@ export default new Router({
     },
     {
       path: '/stock/recive_goods',
-      name: 'actual_stock',
+      name: 'recive_goods',
       component: ReciveGoods
     }
   ]

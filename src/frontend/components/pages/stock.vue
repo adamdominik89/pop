@@ -2,12 +2,13 @@
   <div class="o-data-container">
     <page-data title="Towary">
       <div class="a-button-container f-single"
-      v-for="link in links">
+      v-for="(link, key) in links"
+      :key="key"
+      >
         <button class="a-button f-deep-menu"
                 @click="go_to(link.to)">{{link.label}}
         </button>
       </div>
-
 
     </page-data>
   </div>

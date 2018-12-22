@@ -1,15 +1,46 @@
 <template>
   <div class="o-data-container">
-    produkcja
+    <page-data title="Towary">
+      <div class="a-button-container f-single"
+           v-for="(link, key) in links"
+          :key="key"
+      >
+        <button class="a-button f-deep-menu"
+                @click="go_to(link.to)">{{link.label}}
+        </button>
+      </div>
 
+    </page-data>
 
   </div>
 </template>
 
 <script>
+import PageData from '../templates/page-data'
 export default {
   name: 'Stock',
-  data: () => ({})
+  components: {PageData},
+  data: () => ({
+    links: [
+      {
+        to: '/production/recipes',
+        label: 'Receptury'
+      },
+      {
+        to: '/production/add_new_recipe',
+        label: 'Dodawanie nowej receptury'
+      },
+      {
+        to: '/production/production_plan',
+        label: 'Planowanie produkcji'
+      },
+      {
+        to: '/production/production',
+        label: 'Produkcja'
+      }
+    ]
+
+  })
 }
 </script>
 
