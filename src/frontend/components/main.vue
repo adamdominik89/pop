@@ -5,13 +5,13 @@
       <div class="m-single-container">
         <div class="m-user">
           <label class="a-label f-login">Login:
-          <input class="a-input" type="text"/></label>
+            <input class="a-input" type="text"/></label>
         </div>
       </div>
       <div class="m-single-container">
         <div class="m-password">
           <label>Hasło:
-          <input class="a-input" type="password"/>
+            <input class="a-input" type="password"/>
           </label>
         </div>
       </div>
@@ -29,12 +29,11 @@ export default {
   computed: {},
 
   methods: {
-  log_in(){
-    // kontrola loginu i hasla
-    this.$router.push('/stock')
-
-  },
-  },
+    log_in () {
+      // kontrola loginu i hasla
+      this.$router.push('/stock')
+    }
+  }
 
 }
 </script>

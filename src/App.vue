@@ -2,13 +2,13 @@
   <div id="app">
     <div class="o-buttons">
       <div class="a-button-container">
-        <button class="a-button" @click="go_to_stock">Towary</button>
+        <button class="a-button" @click="go_to_stock">TOWARY</button>
       </div>
       <div class="a-button-container" @click="go_to_production">
-        <button class="a-button">Produkcja</button>
+        <button class="a-button">PRODUKCJA</button>
       </div>
       <div class="a-button-container">
-        <button class="a-button" @click="go_to_reports">Raporty</button>
+        <button class="a-button" @click="go_to_reports">RAPORTY</button>
       </div>
 
     </div>
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import {mapState} from 'vuex'
 
 export default {
