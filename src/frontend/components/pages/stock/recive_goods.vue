@@ -1,6 +1,8 @@
 <template>
   <div class="o-data-container">
     <page-data title="Przyjecie towaru">
+      Przyjęcie :
+
       select ilosc numer partii jeszce jakies info
     </page-data>
   </div>
