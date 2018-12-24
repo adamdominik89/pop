@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import frontend from './frontend/main'
+import frontend from './frontend/frontend'
 
 Vue.use(Vuex)
 
