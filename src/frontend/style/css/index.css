@@ -39,12 +39,34 @@
   padding: 10px;
   margin-bottom: 20px; }
 
+.a-form-container {
+  display: inline-block; }
+
 .a-button {
   height: 50px;
   width: 250px; }
 
 .a-input {
   width: 150px; }
+
+.a-input-container {
+  width: 600px;
+  display: grid;
+  height: 40px;
+  padding-right: 5px;
+  grid-template-columns: 200px 20px 320px 15px; }
+
+.a-input-container.f-data {
+  width: 800px;
+  padding-right: 0px;
+  grid-template-columns: 200px 600px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.a-radio-single {
+  width: 250px;
+  display: inline-block;
+  padding-left: 24px; }
 
 .a-user-container {
   width: 200px;
