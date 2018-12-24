@@ -5,7 +5,7 @@
       <div class="a-input-container f-data">
         <label class="a-input-label"> Przyjęcie : </label>
         <div class="a-form-container f-fiscalization">
-          <template v-for="(type, key) in recive_type"
+          <template v-for="(type, key) in get_recive_options"
           >
             <div class="a-radio-single"
                  :key="key">
@@ -17,8 +17,9 @@
           </template>
         </div>
       </div>
-
+      {{get_actual_recive_option}}
       select ilosc numer partii jeszce jakies info
+      {{get_recive_options}}
     </page-table>
   </div>
 </template>
@@ -26,24 +27,30 @@
 <script>
 
 import PageTable from '../../templates/page-table'
+import {mapGetters, mapState, mapMutations} from 'vuex'
 
 export default {
   name: 'Recive-Goods',
   components: {PageTable},
   data: () => ({
-    value_from_v_model: 0,
-    recive_type: [
-      {
-        label: 'Istniejącego towaru',
-        value: 0
-      },
-      {
-        label: 'Nowego towaru',
-        value: 1
-      }
-    ]
+
+    ...mapState('frontend', ['recive_option'])
   }),
+  mounted () {
+  },
+  computed: {
+    value_from_v_model: {
+      get () {
+        return this.get_actual_recive_option
+      },
+      set (value) {
+        this.update_recive_option(value)
+      }
+    },
+    ...mapGetters('frontend', ['get_recive_options', 'get_actual_recive_option'])
+  },
   methods: {
+    ...mapMutations('frontend', ['update_recive_option'])
   }
 }
 </script>
