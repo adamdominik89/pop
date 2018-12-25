@@ -28,6 +28,11 @@
   .a-button-container:nth-child(n+3) {
     margin-right: 0; }
 
+.a-button-container.f-recive-goods {
+  height: 150px;
+  padding-top: 70px;
+  width: 900px; }
+
 .a-button-container.f-single {
   width: 300px;
   margin: 0; }
@@ -39,12 +44,56 @@
   padding: 10px;
   margin-bottom: 20px; }
 
+.vdp-datepicker {
+  position: unset;
+  text-align: unset;
+  display: inline-block; }
+
+.a-form-container {
+  display: inline-block; }
+
 .a-button {
   height: 50px;
   width: 250px; }
 
 .a-input {
   width: 150px; }
+
+.a-input-container {
+  width: 600px;
+  display: grid;
+  height: 40px;
+  padding-right: 5px;
+  grid-template-columns: 200px 20px 320px 15px; }
+
+.a-input-container.f-data {
+  width: 800px;
+  padding-right: 0px;
+  grid-template-columns: 200px 600px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.a-input-recive-goods {
+  width: 194px;
+  margin-left: 10px; }
+
+.a-radio-single {
+  width: 250px;
+  display: inline-block;
+  padding-left: 24px; }
+
+.a-select {
+  width: 200px; }
+
+.a-select-container {
+  display: inline-block;
+  margin-left: 10px;
+  width: 200px; }
+
+.a-select-label {
+  width: 500px;
+  text-align: right;
+  display: block; }
 
 .a-user-container {
   width: 200px;
@@ -85,6 +134,9 @@ body {
   margin-left: auto;
   margin-right: auto;
   text-align: center; }
+
+.t-data.f-table {
+  width: 900px; }
 
 .t-title {
   height: 50px;

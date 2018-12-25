@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/index'
+import VueGoodTablePlugin from 'vue-good-table'
+import 'vue-good-table/dist/vue-good-table.css'
 
 Vue.config.productionTip = false
+Vue.use(VueGoodTablePlugin)
 
 /* eslint-disable no-new */
 new Vue({
@@ -13,5 +16,6 @@ new Vue({
   router,
   components: { App },
   template: '<App/>',
-  store
+  store,
+  VueGoodTablePlugin
 })

@@ -1,17 +1,28 @@
 <template>
   <div class="o-data-container">
-    <page-data title="Stany towarów">
-      tabelka z aktualnie posiadanymi towarami
-    </page-data>
+    <page-table title="Stany towarów">
+      <vue-good-table
+        :columns="columns_actual_stock"
+        :rows="rows_actual_stock"
+        :groupOptions="{enabled: true}"
+      ></vue-good-table>
+    </page-table>
   </div>
 </template>
 
 <script>
-import PageData from '../../templates/page-data'
+import PageTable from '../../templates/page-table'
+import { VueGoodTable } from 'vue-good-table'
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'actual-stock',
-  components: {PageData},
-  data: () => ({})
+  components: {VueGoodTable, PageTable},
+  data: () => ({
+  }),
+  computed: {
+    ...mapGetters('frontend', ['columns_actual_stock', 'rows_actual_stock']),
+  },
 }
 </script>
 
