@@ -1,7 +1,8 @@
 <template>
   <div class="o-data-container">
     <page-data title="Receptury">
-      Wyswietlanie aktualnych receptur
+      <router-link v-for="(link, key) in links"
+      :key="key" :to="link.to">{{link.label}}</router-link>
     </page-data>
 
   </div>
@@ -13,12 +14,15 @@ export default {
   name: 'PProduction-recipes',
   components: {PageData},
   data: () => ({
+    links: [
+      {
+        to: '',
+        label: 'ciasto czekoladowe'
+      }
+    ]
 
   })
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-
 </style>
