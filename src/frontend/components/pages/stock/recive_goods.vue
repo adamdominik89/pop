@@ -41,8 +41,13 @@
         <div>
           <label class="a-select-label">
             Data przydatności do spożycia:
-            <input class="a-input-recive-goods">
+            <a-date></a-date>
           </label>
+        </div>
+
+        <div class="a-button-container f-recive-goods">
+          <label class="a-select-label">
+            <button>Dodaj produkt do bazy</button></label>
         </div>
 
       </div>
@@ -58,10 +63,10 @@
 import PageTable from '../../templates/page-table'
 import ASelect from '../../atoms/select'
 import {mapGetters, mapState, mapMutations} from 'vuex'
-
+import ADate from '../../atoms/date'
 export default {
   name: 'Recive-Goods',
-  components: {PageTable, ASelect},
+  components: {PageTable, ASelect, ADate},
   data: () => ({
     product_name: '',
     ...mapState('frontend', ['recive_option'])
