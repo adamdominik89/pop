@@ -48,13 +48,13 @@
         <div>
           <label class="a-select-label">
             Data przydatności do spożycia:
-            <input type="date" name="bday" min="2019-01-01" v-model="date_existing">
+            <input type="date" name="bday" min="2019-01-01" v-model="date_existing" class="a-input-recive-goods">
           </label>
         </div>
 
         <div class="a-button-container f-recive-goods">
 
-            <button>Dodaj produkt do bazy</button>
+            <button @click="add_existing">Dodaj produkt do bazy</button>
         </div>
 
       </div>
@@ -87,12 +87,12 @@
         <div>
           <label class="a-select-label">
             Data przydatności do spożycia:
-            <input type="date" name="bday" min="2019-01-01" v-model="date">
+            <input type="date" name="bday" min="2019-01-01" v-model="date" class="a-input-recive-goods">
           </label>
         </div>
 
         <div class="a-button-container f-recive-goods">
-            <button>Dodaj produkt do bazy</button>
+            <button @click="add">Dodaj produkt do bazy</button>
         </div>
       </div>
     </page-table>
@@ -149,7 +149,29 @@ export default {
     ...mapGetters('frontend', ['get_recive_options', 'get_actual_recive_option', 'rows_actual_stock'])
   },
   methods: {
-    ...mapMutations('frontend', ['update_recive_option'])
+    ...mapMutations('frontend', ['update_recive_option']),
+    add_existing () {
+      if (this.product_name_exisiting !== '' &&
+        this.producer_name_existing !== '' &&
+        this.batch_number_existing !== '' &&
+        this.quantity_existing !== 0 &&
+        this.date_existing !== '') {
+        console.log('dodanie do stora')
+      } else {
+        alert('Nie wypełniono wszystkich pól')
+      }
+    },
+    add () {
+      if (this.product_name !== '' &&
+        this.producer_name !== '' &&
+        this.batch_number !== '' &&
+        this.quantity !== 0 &&
+        this.date !== '') {
+        console.log('dodanie do stora nowego towaru')
+      } else {
+        alert('Nie wypełniono wszystkich pól')
+      }
+    }
   }
 }
 </script>
