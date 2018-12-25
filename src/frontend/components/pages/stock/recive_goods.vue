@@ -41,14 +41,14 @@
         <div>
           <label class="a-select-label">
             Ilość [kg]:
-            <input class="a-input-recive-goods" type="number"
+            <input class="a-input-recive-goods" type="number" min="0"
             v-model="quantity_existing">
           </label>
         </div>
         <div>
           <label class="a-select-label">
             Data przydatności do spożycia:
-            <datepicker v-model="date_existing"></datepicker>
+            <input type="date" name="bday" min="2019-01-01" v-model="date_existing">
           </label>
         </div>
 
@@ -62,35 +62,38 @@
 
         <div>
           <label class="a-select-label">Nazwa towaru:
-            <input class="a-input-recive-goods"></label>
+            <input class="a-input-recive-goods"
+            v-model="product_name"></label>
         </div>
         <div>
           <label class="a-select-label">Nazwa producenta:
-            <input class="a-input-recive-goods"></label>
+            <input class="a-input-recive-goods"
+            v-model="producer_name"></label>
         </div>
         <div>
           <label class="a-select-label">
             Numer partii towaru:
-            <input class="a-input-recive-goods">
+            <input class="a-input-recive-goods"
+            v-model="batch_number">
           </label>
         </div>
         <div>
           <label class="a-select-label">
             Ilość [kg]:
-            <input class="a-input-recive-goods">
+            <input class="a-input-recive-goods" type="number" min="0"
+            v-model="quantity">
           </label>
         </div>
         <div>
           <label class="a-select-label">
             Data przydatności do spożycia:
-            <datepicker></datepicker>
+            <input type="date" name="bday" min="2019-01-01" v-model="date">
           </label>
         </div>
 
         <div class="a-button-container f-recive-goods">
             <button>Dodaj produkt do bazy</button>
         </div>
-
       </div>
     </page-table>
   </div>
@@ -111,6 +114,12 @@ export default {
     batch_number_existing: '',
     quantity_existing: 0,
     date_existing: '',
+    product_name: '',
+    producer_name: '',
+    batch_number: '',
+    quantity: 0,
+    date: '',
+
     ...mapState('frontend', ['recive_option'])
   }),
   mounted () {
