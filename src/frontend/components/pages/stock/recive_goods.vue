@@ -24,34 +24,37 @@
         <label class="a-select-label">Wybierz towar:
         <a-select
         :options="get_actual_goods"
-        v-model="product_name"></a-select></label>
+        v-model="product_name_exisiting"></a-select></label>
         </div>
         <div>
           <label class="a-select-label">Nazwa producenta:
-            <input class="a-input-recive-goods"></label>
+            <input class="a-input-recive-goods"
+            v-model="producer_name_existing"></label>
         </div>
         <div>
           <label class="a-select-label">
           Numer partii towaru:
-            <input class="a-input-recive-goods">
+            <input class="a-input-recive-goods"
+            v-model="batch_number_existing">
         </label>
         </div>
         <div>
           <label class="a-select-label">
             Ilość [kg]:
-            <input class="a-input-recive-goods">
+            <input class="a-input-recive-goods" type="number"
+            v-model="quantity_existing">
           </label>
         </div>
         <div>
           <label class="a-select-label">
             Data przydatności do spożycia:
-            <a-date></a-date>
+            <datepicker v-model="date_existing"></datepicker>
           </label>
         </div>
 
         <div class="a-button-container f-recive-goods">
-          <label class="a-select-label">
-            <button>Dodaj produkt do bazy</button></label>
+
+            <button>Dodaj produkt do bazy</button>
         </div>
 
       </div>
@@ -80,13 +83,12 @@
         <div>
           <label class="a-select-label">
             Data przydatności do spożycia:
-            <a-date></a-date>
+            <datepicker></datepicker>
           </label>
         </div>
 
         <div class="a-button-container f-recive-goods">
-          <label class="a-select-label">
-            <button>Dodaj produkt do bazy</button></label>
+            <button>Dodaj produkt do bazy</button>
         </div>
 
       </div>
@@ -99,12 +101,16 @@
 import PageTable from '../../templates/page-table'
 import ASelect from '../../atoms/select'
 import {mapGetters, mapState, mapMutations} from 'vuex'
-import ADate from '../../atoms/date'
+import Datepicker from 'vuejs-datepicker'
 export default {
   name: 'Recive-Goods',
-  components: {PageTable, ASelect, ADate},
+  components: {PageTable, ASelect, Datepicker},
   data: () => ({
-    product_name: '',
+    product_name_exisiting: '',
+    producer_name_existing: '',
+    batch_number_existing: '',
+    quantity_existing: 0,
+    date_existing: '',
     ...mapState('frontend', ['recive_option'])
   }),
   mounted () {

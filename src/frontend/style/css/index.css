@@ -44,6 +44,11 @@
   padding: 10px;
   margin-bottom: 20px; }
 
+.vdp-datepicker {
+  position: unset;
+  text-align: unset;
+  display: inline-block; }
+
 .a-form-container {
   display: inline-block; }
 
