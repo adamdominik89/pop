@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '../frontend/components/main'
 import Stock from '../frontend/components/pages/stock'
-import store from '../store/frontend/production'
 
 import Production from '../frontend/components/pages/production'
 import Deep from '../frontend/components/pages/production/deep'
@@ -16,7 +15,6 @@ import TechnologyCards from '../frontend/components/pages/reports/technology-car
 
 import ActualStock from '../frontend/components/pages/stock/actual_stock'
 import ReciveGoods from '../frontend/components/pages/stock/recive_goods'
-
 
 Vue.use(Router)
 
@@ -82,13 +80,12 @@ const router = new Router({
       path: '/stock/recive_goods',
       name: 'recive_goods',
       component: ReciveGoods
-    },
+    }
   ]
 })
 router.beforeEach((to, from, next) => {
-  console.log('dodanie do stora informacji na temat tego ktory link zostal klikniety i ktora kolumne i wiersze ma miec komponent')
-  console.log(store)
+  // zeby dodac nowy link to trzeba wywoalcc metode router.addRoutes
+  console.log('dupa')
   next()
 })
-
 export default router
