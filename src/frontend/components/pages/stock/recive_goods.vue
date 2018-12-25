@@ -22,7 +22,8 @@
         przyjecie istniejacego towaru
         select ze stora / input na numer partii / input na ilosc / input na date przydatnosci do spozycia bardzo wazne data musi byc jednolita dla kazdego produktu
         <a-select
-        :options="get_actual_goods"></a-select>
+        :options="get_actual_goods"
+        v-model="product_name"></a-select>
       </div>
       <div v-if="value_from_v_model === 1">
         przyjecie nowego towaru
@@ -41,7 +42,7 @@ export default {
   name: 'Recive-Goods',
   components: {PageTable, ASelect},
   data: () => ({
-
+    product_name: '',
     ...mapState('frontend', ['recive_option'])
   }),
   mounted () {
@@ -49,7 +50,14 @@ export default {
   computed: {
     get_actual_goods () {
       let array = []
-
+      for (let i = 0; i < this.rows_actual_stock.length; i++) {
+        console.log(this.rows_actual_stock[i].label)
+        let obj = {
+          label: this.rows_actual_stock[i].label,
+          value: this.rows_actual_stock[i].label
+        }
+        array.push(obj)
+      }
       // pobranie opcji ze stora i dodanie do tablicy
       return array
     },
@@ -61,7 +69,7 @@ export default {
         this.update_recive_option(value)
       }
     },
-    ...mapGetters('frontend', ['get_recive_options', 'get_actual_recive_option'])
+    ...mapGetters('frontend', ['get_recive_options', 'get_actual_recive_option', 'rows_actual_stock'])
   },
   methods: {
     ...mapMutations('frontend', ['update_recive_option'])
