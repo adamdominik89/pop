@@ -32,6 +32,18 @@
             <input class="a-input-recive-goods">
         </label>
         </div>
+        <div>
+          <label class="a-select-label">
+            Ilość [kg]:
+            <input class="a-input-recive-goods">
+          </label>
+        </div>
+        <div>
+          <label class="a-select-label">
+            Data przydatności do spożycia:
+            <input class="a-input-recive-goods">
+          </label>
+        </div>
 
       </div>
       <div v-if="value_from_v_model === 1">
