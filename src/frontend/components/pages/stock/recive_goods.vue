@@ -149,14 +149,19 @@ export default {
     ...mapGetters('frontend', ['get_recive_options', 'get_actual_recive_option', 'rows_actual_stock'])
   },
   methods: {
-    ...mapMutations('frontend', ['update_recive_option']),
+    ...mapMutations('frontend', ['update_recive_option', 'update_new_stock', 'update_existing_stock']),
     add_existing () {
       if (this.product_name_exisiting !== '' &&
         this.producer_name_existing !== '' &&
         this.batch_number_existing !== '' &&
         this.quantity_existing !== 0 &&
         this.date_existing !== '') {
-        console.log('dodanie do stora')
+        this.update_existing_stock({
+          productname: this.product_name_exisiting,
+          partnumber: this.batch_number_existing,
+          quantity: this.quantity_existing,
+          bestbefore: this.date_existing,
+          producer: this.producer_name_existing})
       } else {
         alert('Nie wypełniono wszystkich pól')
       }
@@ -167,7 +172,12 @@ export default {
         this.batch_number !== '' &&
         this.quantity !== 0 &&
         this.date !== '') {
-        console.log('dodanie do stora nowego towaru')
+        this.update_new_stock({
+          productname: this.product_name,
+          partnumber: this.batch_number,
+          quantity: this.quantity,
+          bestbefore: this.date,
+          producer: this.producer_name})
       } else {
         alert('Nie wypełniono wszystkich pól')
       }
