@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="a-select-container">
     <select
       v-model="_value"
       class="a-select"

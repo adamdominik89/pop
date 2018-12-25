@@ -18,12 +18,21 @@
         </div>
       </div>
 
-      <div v-if="value_from_v_model === 0">
-        przyjecie istniejacego towaru
-        select ze stora / input na numer partii / input na ilosc / input na date przydatnosci do spozycia bardzo wazne data musi byc jednolita dla kazdego produktu
+      <div v-if="value_from_v_model === 0"
+      class="p-stock-input-container">
+        <div>
+        <label class="a-select-label">Wybierz towar:
         <a-select
         :options="get_actual_goods"
-        v-model="product_name"></a-select>
+        v-model="product_name"></a-select></label>
+        </div>
+        <div>
+          <label class="a-select-label">
+          Numer partii towaru:
+            <input class="a-input-recive-goods">
+        </label>
+        </div>
+
       </div>
       <div v-if="value_from_v_model === 1">
         przyjecie nowego towaru
