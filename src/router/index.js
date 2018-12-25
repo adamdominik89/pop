@@ -2,12 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '../frontend/components/main'
 import Stock from '../frontend/components/pages/stock'
+import store from '../store/frontend/production'
 
 import Production from '../frontend/components/pages/production'
 import Deep from '../frontend/components/pages/production/deep'
 import AddNewRecipe from '../frontend/components/pages/production/add-new-recipe'
 import Plan from '../frontend/components/pages/production/plan'
 import Recipes from '../frontend/components/pages/production/recipes'
+import Display from '../frontend/components/pages/production/recipes/display'
 
 import Reports from '../frontend/components/pages/reports'
 import TechnologyCards from '../frontend/components/pages/reports/technology-cards'
@@ -18,12 +20,17 @@ import ReciveGoods from '../frontend/components/pages/stock/recive_goods'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
       name: 'main',
       component: main
+    },
+    {
+      path: '/production/recipes/display',
+      name: 'display',
+      component: Display
     },
     {
       path: '/stock',
@@ -78,3 +85,10 @@ export default new Router({
     },
   ]
 })
+router.beforeEach((to, from, next) => {
+  console.log('dodanie do stora informacji na temat tego ktory link zostal klikniety i ktora kolumne i wiersze ma miec komponent')
+  console.log(store)
+  next()
+})
+
+export default router

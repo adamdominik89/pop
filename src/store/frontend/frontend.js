@@ -88,7 +88,6 @@ module.exports = {
       state.rows_actual_stock.push(obj)
     },
     update_existing_stock: (state, {productname, partnumber, quantity, bestbefore, producer}) => {
-      let product_name = productname
       for (let i = 0; i < state.rows_actual_stock.length; i++) {
         if (state.rows_actual_stock[i].label === productname) {
           let obj = {

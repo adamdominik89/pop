@@ -1,8 +1,17 @@
 <template>
   <div class="o-data-container">
     <page-data title="Receptury">
-      <router-link v-for="(link, key) in links"
-      :key="key" :to="link.to">{{link.label}}</router-link>
+      <div class="a-single-link"
+           v-for="(link, key) in links"
+           :key="key">
+      <router-link
+        :to="{
+        path: 'link.to',
+        params: {
+          id: link.id
+        },
+      }">{{link.label}}</router-link>
+      </div>
     </page-data>
 
   </div>
@@ -16,12 +25,21 @@ export default {
   data: () => ({
     links: [
       {
-        to: '',
-        label: 'ciasto czekoladowe'
+        to: '/production/recipes/display',
+        label: 'ciasto czekoladowe',
+        id: 0
+      },
+      {
+        to: '/production/recipes/display',
+        label: 'ciasto cytrynowe',
+        id: 1
       }
     ]
 
-  })
+  }),
+  mounted () {
+    // console.log(this.$route.params)
+  }
 }
 </script>
 <style>
