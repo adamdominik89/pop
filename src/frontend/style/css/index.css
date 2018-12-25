@@ -63,14 +63,26 @@
   margin-left: auto;
   margin-right: auto; }
 
+.a-input-recive-goods {
+  width: 194px;
+  margin-left: 10px; }
+
 .a-radio-single {
   width: 250px;
   display: inline-block;
   padding-left: 24px; }
 
+.a-select {
+  width: 200px; }
+
 .a-select-container {
   display: inline-block;
   margin-left: 10px; }
+
+.a-select-label {
+  width: 500px;
+  text-align: right;
+  display: block; }
 
 .a-user-container {
   width: 200px;
