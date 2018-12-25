@@ -27,6 +27,10 @@
         v-model="product_name"></a-select></label>
         </div>
         <div>
+          <label class="a-select-label">Nazwa producenta:
+            <input class="a-input-recive-goods"></label>
+        </div>
+        <div>
           <label class="a-select-label">
           Numer partii towaru:
             <input class="a-input-recive-goods">
@@ -52,7 +56,39 @@
 
       </div>
       <div v-if="value_from_v_model === 1">
-        przyjecie nowego towaru
+
+        <div>
+          <label class="a-select-label">Nazwa towaru:
+            <input class="a-input-recive-goods"></label>
+        </div>
+        <div>
+          <label class="a-select-label">Nazwa producenta:
+            <input class="a-input-recive-goods"></label>
+        </div>
+        <div>
+          <label class="a-select-label">
+            Numer partii towaru:
+            <input class="a-input-recive-goods">
+          </label>
+        </div>
+        <div>
+          <label class="a-select-label">
+            Ilość [kg]:
+            <input class="a-input-recive-goods">
+          </label>
+        </div>
+        <div>
+          <label class="a-select-label">
+            Data przydatności do spożycia:
+            <a-date></a-date>
+          </label>
+        </div>
+
+        <div class="a-button-container f-recive-goods">
+          <label class="a-select-label">
+            <button>Dodaj produkt do bazy</button></label>
+        </div>
+
       </div>
     </page-table>
   </div>
