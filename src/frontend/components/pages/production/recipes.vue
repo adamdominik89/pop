@@ -5,7 +5,7 @@
            v-for="(link, key) in links"
            :key="key">
       <router-link
-        :to="{path: link.to, name: link.name, params: { id: link.name}}">{{link.label}}</router-link>
+        :to="{path: link.to, params: { id: link.name}}">{{link.label}}</router-link>
       </div>
     </page-data>
 

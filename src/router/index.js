@@ -27,7 +27,6 @@ const router = new Router({
     },
     {
       path: '/production/recipes/display',
-      name: 'display',
       component: Display
     },
     {
