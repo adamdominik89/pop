@@ -27,7 +27,10 @@ const router = new Router({
     },
     {
       path: '/production/recipes/display',
-      component: Display
+      component: Display,
+      name: 'display',
+      props: true
+
     },
     {
       path: '/stock',

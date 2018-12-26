@@ -5,7 +5,7 @@
            v-for="(link, key) in get_recipe_links"
            :key="key">
       <router-link
-        :to="{path: link.to, params: { id: link.name}}">{{link.id}}. {{link.label}}</router-link>
+        :to="{path: link.to, name: link.name, params: { id: link.additional_data}}">{{link.id}}. {{link.label}}</router-link>
       </div>
     </page-data>
 
@@ -21,7 +21,7 @@ export default {
   data: () => ({
   }),
   computed: {
-    ...mapGetters('production', ['get_recipe_links'])
+    ...mapGetters('production', ['get_recipe_links']),
   },
   mounted () {
     // console.log(this.$route.params)

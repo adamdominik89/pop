@@ -1,6 +1,7 @@
 <template>
   <div class="o-data-container">
     <page-table title="Receptury">
+      {{id}}
       <vue-good-table
         :columns="columns_for_recipe"
         :rows="rows_for_recipe"
@@ -40,6 +41,7 @@ export default {
 
   },
   mounted () {
+    // console.log(this.$route)
   }
 }
 </script>

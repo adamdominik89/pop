@@ -8,13 +8,15 @@ module.exports = {
         to: '/production/recipes/display',
         label: 'ciasto czekoladowe',
         id: 1,
-        name: 'ciasto_czekoladowe'
+        name: 'display',
+        additional_data: 'ciasto_czekoladowe'
       },
       {
         to: '/production/recipes/display',
         label: 'ciasto cytrynowe',
         id: 2,
-        name: 'ciasto_cytrynowe'
+        name: 'display',
+        additional_data: 'ciasto_cytrynowe'
       }
     ]
   },
