@@ -3,7 +3,7 @@
     <page-table title="Receptury">
       {{id}}
       <vue-good-table
-        :columns="columns_for_recipe"
+        :columns="get_columns"
         :rows="rows_for_recipe"
         ></vue-good-table>
     </page-table>
@@ -14,6 +14,8 @@
 <script>
 import { VueGoodTable } from 'vue-good-table'
 import PageTable from '../../../templates/page-table'
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'PProduction-recipes',
   components: {PageTable, VueGoodTable},
@@ -21,6 +23,7 @@ export default {
   data: () => ({
   }),
   computed: {
+    ...mapGetters('production', ['get_columns', 'get_rows']),
     columns_for_recipe () {
       let array = []
       let obj = {
@@ -32,16 +35,23 @@ export default {
     },
     rows_for_recipe () {
       let array = []
-      let obj = {
-        partnumber: 'iii'
+      let arraytoverify = this.get_rows
+      console.log(arraytoverify)
+      for (let i = 0; i < arraytoverify.length; i++) {
+        console.log(arraytoverify[i].product)
+        console.log(this.$route)
+        console.log(this.id)
+        if (arraytoverify[i].product == this.id) {
+          console.log('dupa')
+          array = arraytoverify[i].array_of_rows
+        }
       }
-      array.push(obj)
       return array
     }
 
   },
   mounted () {
-    // console.log(this.$route)
+    console.log(this.id)
   }
 }
 </script>
