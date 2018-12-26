@@ -34,7 +34,6 @@ const router = new Router({
       path: '/stock',
       name: 'stock',
       component: Stock
-
     },
     {
       path: '/production',
@@ -84,8 +83,11 @@ const router = new Router({
   ]
 })
 router.beforeEach((to, from, next) => {
+  console.log(to)
+  if (to.fullPath === '/production/recipes/display') {
+    console.log('tutaj nalezy umiescic funkcje ktora bedzie czyscic kolumny w storze i tworzyc kolumny oraz wiersze')
+  }
   // zeby dodac nowy link to trzeba wywoalcc metode router.addRoutes
-  console.log('dupa')
   next()
 })
 export default router

@@ -5,12 +5,7 @@
            v-for="(link, key) in links"
            :key="key">
       <router-link
-        :to="{
-        path: 'link.to',
-        params: {
-          id: link.id
-        },
-      }">{{link.label}}</router-link>
+        :to="{path: link.to, name: link.name, params: { id: link.name}}">{{link.label}}</router-link>
       </div>
     </page-data>
 
@@ -27,12 +22,14 @@ export default {
       {
         to: '/production/recipes/display',
         label: 'ciasto czekoladowe',
-        id: 0
+        id: 0,
+        name: 'ciasto_czekoladowe'
       },
       {
         to: '/production/recipes/display',
         label: 'ciasto cytrynowe',
-        id: 1
+        id: 1,
+        name: 'ciasto_cytrynowe'
       }
     ]
 

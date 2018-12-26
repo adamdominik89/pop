@@ -4,7 +4,7 @@
       <vue-good-table
         :columns="columns_for_recipe"
         :rows="rows_for_recipe"
-        :groupOptions="{enabled: true}"></vue-good-table>
+        ></vue-good-table>
     </page-table>
 
   </div>
@@ -16,6 +16,7 @@ import PageTable from '../../../templates/page-table'
 export default {
   name: 'PProduction-recipes',
   components: {PageTable, VueGoodTable},
+  props: ['id', 'name'],
   data: () => ({
   }),
   computed: {
@@ -23,7 +24,7 @@ export default {
       let array = []
       let obj = {
         label: 'Numer partii',
-        field: 'part_number'
+        field: 'partnumber'
       }
       array.push(obj)
       return array
@@ -31,16 +32,14 @@ export default {
     rows_for_recipe () {
       let array = []
       let obj = {
-        part_number: 'iii'
+        partnumber: 'iii'
       }
       array.push(obj)
       return array
     }
 
   },
-  mounted() {
-    console.log(this.$router)
-    console.log(this.$route)
+  mounted () {
   }
 }
 </script>
