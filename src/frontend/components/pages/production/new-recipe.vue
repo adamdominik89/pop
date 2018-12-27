@@ -8,9 +8,7 @@
           Nazwa produktu:<input/>
         </div>
         <div>Lista Półproduktów</div>
-      </div>
-      <div>
-      <div v-for="(number, key) in quantity"
+      <div v-for="(number, key) in get_row_for_data"
       :key="key">
         <label class="a-select-label">
           Nazwa połproduktu:
@@ -36,7 +34,19 @@ export default {
   components: {PageTable, ASelect},
   data: () => ({
     quantity: 0
-  })
+  }),
+  computed: {
+    get_row_for_data () {
+      let array = []
+      for (let i = 0 ; i < this.quantity; i++) {
+        let obj = {
+          value: ''
+        }
+        array.push(obj)
+      }
+      return array
+    }
+  },
 }
 </script>
 
