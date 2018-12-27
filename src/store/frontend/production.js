@@ -38,7 +38,7 @@ module.exports = {
           {
             ingredients: 'proszek do pieczenia',
             quantity_grams: 10,
-            quantity_percent: 0.1,
+            quantity_percent: 1,
             recipe_1kg: 0.01
           },
           {
@@ -50,7 +50,7 @@ module.exports = {
           {
             ingredients: 'aromat waniliowy',
             quantity_grams: 5,
-            quantity_percent: 0.05,
+            quantity_percent: 0.5,
             recipe_1kg: 0.005
           }
         ]
@@ -78,9 +78,9 @@ module.exports = {
           },
           {
             ingredients: 'naturalny proszek cytrynowy',
-            quantity_grams: 600,
-            quantity_percent: 60,
-            recipe_1kg: 0.6
+            quantity_grams: 30,
+            quantity_percent: 3,
+            recipe_1kg: 0.03
           }
         ]
       }

@@ -5,10 +5,11 @@ import Stock from '../frontend/components/pages/stock'
 
 import Production from '../frontend/components/pages/production'
 import Deep from '../frontend/components/pages/production/deep'
-import AddNewRecipe from '../frontend/components/pages/production/add-new-recipe'
+import NewRecipe from '../frontend/components/pages/production/new-recipe'
 import Plan from '../frontend/components/pages/production/plan'
 import Recipes from '../frontend/components/pages/production/recipes'
 import Display from '../frontend/components/pages/production/recipes/display'
+import Add from '../frontend/components/pages/production/new-recipe/add'
 
 import Reports from '../frontend/components/pages/reports'
 import TechnologyCards from '../frontend/components/pages/reports/technology-cards'
@@ -53,9 +54,14 @@ const router = new Router({
       component: Recipes
     },
     {
+      path: '/production/new-recipe/add',
+      name: 'add',
+      component: Add
+    },
+    {
       path: '/production/add_new_recipe',
       name: 'add_new_recipe',
-      component: AddNewRecipe
+      component: NewRecipe
     },
     {
       path: '/production/plan',
