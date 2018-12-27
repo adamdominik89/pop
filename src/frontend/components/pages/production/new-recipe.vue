@@ -1,6 +1,6 @@
 <template>
   <div class="o-data-container">
-    <page-data title="Dodanie nowej receptury">
+    <page-table title="Dodanie nowej receptury">
       ilość produktów <input v-model="quantity" type="number"/>
       <div v-if="quantity !== 0">
         <div>
@@ -9,6 +9,7 @@
         </div>
         <div>Lista Półproduktów</div>
       </div>
+      <div>
       <div v-for="(number, key) in quantity"
       :key="key">
         <label class="a-select-label">
@@ -20,17 +21,19 @@
           <input/>
         </label>
       </div>
-    </page-data>
+        <button>Dodaj!</button>
+      </div>
+    </page-table>
 
   </div>
 </template>
 
 <script>
-import PageData from '../../templates/page-data'
+import PageTable from '../../templates/page-table'
 import ASelect from '../../atoms/select'
 export default {
   name: 'PProduction-add-new-recipe',
-  components: {PageData, ASelect},
+  components: {PageTable, ASelect},
   data: () => ({
     quantity: 0
   })
