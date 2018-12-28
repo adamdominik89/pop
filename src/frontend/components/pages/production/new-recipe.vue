@@ -89,10 +89,12 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('production', ['add_new_link']),
+    ...mapMutations('production', ['add_new_link', 'add_rows_for_single_recipe']),
     add_to_store () {
       let array = this.get_row_for_data
       let canadd = true
+      let totalgrams = 0
+      let arraytostore = []
       if (this.text_for_product === '') {
         alert('Nie wypełniono nazwy produktu')
         canadd = false
@@ -106,6 +108,7 @@ export default {
           canadd = false
           alert('Liczba gram musi być większa od 0')
         }
+        totalgrams += array[i].grams
       }
       if (canadd === true) {
         // stworzenie linka
@@ -119,8 +122,22 @@ export default {
           name: 'display'
         }
         this.add_new_link({newlink: obj})
-        for (let c = 0; c < actuallinks.length; c++) {
+        let percentvalue = 0
+        let onekgvalue = 0
+        for (let s = 0; s < array.length ; s++) {
+          percentvalue = (array[s].grams * 1) / totalgrams
+          onekgvalue = percentvalue * 1000
+          console.log(array[s].label)
+          let objfortable = {
+            ingredients: array[s].product,
+            quantity_grams: array[s].grams,
+            quantity_percent: percentvalue,
+            recipe_1kg: onekgvalue
+          }
+          arraytostore.push(objfortable)
         }
+        console.log(arraytostore)
+        this.add_rows_for_single_recipe({id: nextid, arraytostore})
 
         // stworzenie wierszy dla receptury
 
