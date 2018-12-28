@@ -8,13 +8,13 @@ module.exports = {
         to: '/production/recipes/display',
         label: 'ciasto czekoladowe',
         id: 1,
-        name: 'display',
+        name: 'display'
       },
       {
         to: '/production/recipes/display',
         label: 'ciasto cytrynowe',
         id: 2,
-        name: 'display',
+        name: 'display'
       }
     ],
     rows_for_single_recipe: [
@@ -22,31 +22,31 @@ module.exports = {
         product: 1,
         array_of_rows: [
           {
-            ingredients: 'mąka pszenna typ 500',
+            ingredients: 'Mąka pszenna typ 500',
             quantity_grams: 600,
             quantity_percent: 60,
             recipe_1kg: 0.6
           },
           {
-            ingredients: 'cukier',
+            ingredients: 'Cukier',
             quantity_grams: 300,
             quantity_percent: 30,
             recipe_1kg: 0.3
           },
           {
-            ingredients: 'proszek do pieczenia',
+            ingredients: 'Proszek do pieczenia',
             quantity_grams: 10,
             quantity_percent: 1,
             recipe_1kg: 0.01
           },
           {
-            ingredients: 'kakao 22%',
+            ingredients: 'Kakao 22%',
             quantity_grams: 85,
             quantity_percent: 8.5,
             recipe_1kg: 0.085
           },
           {
-            ingredients: 'aromat waniliowy',
+            ingredients: 'Aromat waniliowy 200407K',
             quantity_grams: 5,
             quantity_percent: 0.5,
             recipe_1kg: 0.005
@@ -57,25 +57,25 @@ module.exports = {
         product: 2,
         array_of_rows: [
           {
-            ingredients: 'mąka pszenna typ 500',
+            ingredients: 'Mąka pszenna typ 500',
             quantity_grams: 600,
             quantity_percent: 60,
             recipe_1kg: 600
           },
           {
-            ingredients: 'cukier',
+            ingredients: 'Cukier',
             quantity_grams: 200,
             quantity_percent: 20,
             recipe_1kg: 200
           },
           {
-            ingredients: 'proszek do pieczenia',
+            ingredients: 'Proszek do pieczenia',
             quantity_grams: 10,
             quantity_percent: 1,
             recipe_1kg: 10
           },
           {
-            ingredients: 'naturalny proszek cytrynowy',
+            ingredients: 'Naturalny proszek cytrynowy',
             quantity_grams: 30,
             quantity_percent: 3,
             recipe_1kg: 30
