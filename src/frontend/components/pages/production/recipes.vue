@@ -23,7 +23,6 @@ export default {
     ...mapGetters('production', ['get_recipe_links']),
   },
   mounted () {
-    // console.log(this.$route.params)
   }
 }
 </script>

@@ -47,7 +47,6 @@ export default {
       let sum_percent = 0
       let sum_recipe_for_one_kg = 0
       for (let x = 0; x < array.length; x++) {
-        console.log(sum_grams)
         sum_grams += parseInt(array[x].quantity_grams)
         sum_percent += array[x].quantity_percent
         sum_recipe_for_one_kg += array[x].recipe_1kg
@@ -62,7 +61,7 @@ export default {
       return array
     },
     get_title () {
-      let title = 'title'
+      let title = ''
       let array = this.get_recipe_links
       for (let i = 0; i < array.length; i++) {
         if (array[i].id === this.id) title = array[i].label

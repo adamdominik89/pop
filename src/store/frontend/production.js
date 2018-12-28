@@ -60,25 +60,31 @@ module.exports = {
             ingredients: 'mąka pszenna typ 500',
             quantity_grams: 600,
             quantity_percent: 60,
-            recipe_1kg: 0.6
+            recipe_1kg: 600
           },
           {
             ingredients: 'cukier',
             quantity_grams: 200,
             quantity_percent: 20,
-            recipe_1kg: 0.2
+            recipe_1kg: 200
           },
           {
             ingredients: 'proszek do pieczenia',
             quantity_grams: 10,
-            quantity_percent: 0.1,
-            recipe_1kg: 0.01
+            quantity_percent: 1,
+            recipe_1kg: 10
           },
           {
             ingredients: 'naturalny proszek cytrynowy',
             quantity_grams: 30,
             quantity_percent: 3,
-            recipe_1kg: 0.03
+            recipe_1kg: 30
+          },
+          {
+            ingredients: 'mleko w proszku pełne',
+            quantity_grams: 160,
+            quantity_percent: 16,
+            recipe_1kg: 160
           }
         ]
       }

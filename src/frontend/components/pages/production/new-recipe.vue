@@ -72,7 +72,6 @@ export default {
         }
         array.push(obj)
       }
-      // console.log(array)
       return array
     },
     get_results () {
@@ -84,7 +83,6 @@ export default {
         }
         arrayofresults.push(obj)
       }
-      console.log(arrayofresults)
       return arrayofresults
     }
   },
@@ -125,10 +123,9 @@ export default {
         this.add_new_link({newlink: obj})
         let percentvalue = 0
         let onekgvalue = 0
-        for (let s = 0; s < array.length ; s++) {
+        for (let s = 0; s < array.length; s++) {
           percentvalue = (array[s].grams * 100) / totalgrams
           onekgvalue = percentvalue * 10
-          console.log(array[s].label)
           let objfortable = {
             ingredients: array[s].product,
             quantity_grams: array[s].grams,
@@ -137,12 +134,7 @@ export default {
           }
           arraytostore.push(objfortable)
         }
-        console.log(arraytostore)
         this.add_rows_for_single_recipe({id: nextid, arraytostore})
-
-        // stworzenie wierszy dla receptury
-
-        console.log('dodanie receptury do stora')
       }
     }
   }
