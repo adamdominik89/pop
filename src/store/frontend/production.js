@@ -9,14 +9,12 @@ module.exports = {
         label: 'ciasto czekoladowe',
         id: 1,
         name: 'display',
-        additional_data: 'ciasto_czekoladowe'
       },
       {
         to: '/production/recipes/display',
         label: 'ciasto cytrynowe',
         id: 2,
         name: 'display',
-        additional_data: 'ciasto_cytrynowe'
       }
     ],
     rows_for_single_recipe: [
@@ -110,6 +108,10 @@ module.exports = {
     get_rows: state => state.rows_for_single_recipe
   },
   mutations: {
+    add_new_link: (state, {newlink}) => {
+      console.log(newlink)
+      state.recipe_links.push(newlink)
+    }
   },
   actions: {
   }

@@ -24,10 +24,13 @@
           </label>
           <label class="a-select-label f-double">
             Ilość w gramach:
-            <input v-model="number.grams" type="number"/>
+            <input v-model="number.grams" type="number" min="0"/>
           </label>
         </div>
-        <button @click="add_to_store">Dodaj!</button>
+        <button
+          @click="add_to_store">
+          Dodaj!
+        </button>
       </div>
     </page-table>
 
@@ -37,7 +40,7 @@
 <script>
 import PageTable from '../../templates/page-table'
 import ASelect from '../../atoms/select'
-import {mapGetters} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 
 export default {
   name: 'PProduction-add-new-recipe',
@@ -48,16 +51,7 @@ export default {
   }),
   computed: {
     ...mapGetters('frontend', ['rows_actual_stock']),
-    get_quantity: {
-      get (val) {
-        let value = 0
-        if (val === value) val = value
-        return val
-      },
-      set (val) {
-        this.$emit('input', val)
-      }
-    },
+    ...mapGetters('production', ['get_recipe_links']),
     get_options_for_recipe () {
       let arrayofoptions = []
       for (let x = 0; x < this.rows_actual_stock.length; x++) {
@@ -95,10 +89,43 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('production', ['add_new_link']),
     add_to_store () {
-      console.log(this.get_row_for_data)
-      console.log(this.text_for_product)
-      console.log('dodanie receptury do stora')
+      let array = this.get_row_for_data
+      let canadd = true
+      if (this.text_for_product === '') {
+        alert('Nie wypełniono nazwy produktu')
+        canadd = false
+      }
+      for (let i = 0; i < array.length; i++) {
+        if (array[i].product === '') {
+          canadd = false
+          alert('Nie wypełniono jednego z pól półproduktów')
+        }
+        if (array[i].grams === 0) {
+          canadd = false
+          alert('Liczba gram musi być większa od 0')
+        }
+      }
+      if (canadd === true) {
+        // stworzenie linka
+        // 1 pobranie aktualnej tablicy linków, przypisanie id + 1
+        let actuallinks = this.get_recipe_links
+        let nextid = actuallinks[actuallinks.length - 1].id + 1
+        let obj = {
+          to: '/production/recipes/display',
+          label: this.text_for_product,
+          id: nextid,
+          name: 'display'
+        }
+        this.add_new_link({newlink: obj})
+        for (let c = 0; c < actuallinks.length; c++) {
+        }
+
+        // stworzenie wierszy dla receptury
+
+        console.log('dodanie receptury do stora')
+      }
     }
   }
 }
