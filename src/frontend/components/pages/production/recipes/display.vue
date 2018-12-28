@@ -47,7 +47,8 @@ export default {
       let sum_percent = 0
       let sum_recipe_for_one_kg = 0
       for (let x = 0; x < array.length; x++) {
-        sum_grams += array[x].quantity_grams
+        console.log(sum_grams)
+        sum_grams += parseInt(array[x].quantity_grams)
         sum_percent += array[x].quantity_percent
         sum_recipe_for_one_kg += array[x].recipe_1kg
       }

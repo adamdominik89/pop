@@ -108,7 +108,8 @@ export default {
           canadd = false
           alert('Liczba gram musi być większa od 0')
         }
-        totalgrams += array[i].grams
+        let value = parseInt(array[i].grams)
+        totalgrams += value
       }
       if (canadd === true) {
         // stworzenie linka
@@ -125,8 +126,8 @@ export default {
         let percentvalue = 0
         let onekgvalue = 0
         for (let s = 0; s < array.length ; s++) {
-          percentvalue = (array[s].grams * 1) / totalgrams
-          onekgvalue = percentvalue * 1000
+          percentvalue = (array[s].grams * 100) / totalgrams
+          onekgvalue = percentvalue * 10
           console.log(array[s].label)
           let objfortable = {
             ingredients: array[s].product,
