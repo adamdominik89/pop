@@ -23,7 +23,7 @@
             Brak wystarczającej ilości półproduktów w magazynie.
           </div>
           <div>
-            Zmniejsz ilość produkcyjną lub Zaplanuj ponownie produkcję:
+            Zmniejsz ilość produkcyjną lub Zaplanuj ponownie produkcję dla ilości {{howmanykg}} kg:
           </div>
           <div>
             1. Zamów odpowiednie towary
@@ -66,7 +66,8 @@ export default {
     product_name: '',
     howmanykg: 1,
     doproduction: false,
-    productionispossible: true
+    productionispossible: true,
+    maximumvalueformachine: 400
   }),
   computed: {
     ...mapGetters('production', ['get_recipe_links', 'get_rows']),
