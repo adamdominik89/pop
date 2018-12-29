@@ -2,6 +2,11 @@
   <div class="o-data-container">
     <page-data title="Produkcja">
     produkcja
+      select produktu /
+      podanie ilości produkcyjnej /
+      button potwierdz /
+      WYNIK: brakuje w towarach nastepujacych produktów zmień ilość produkcyjna na mniejsza
+      LUB wyswietlenie tabelek z numerem poszczegolnych zasypów oraz numerów partii produkcyjnych dla poszczególnych zasypów.
     </page-data>
 
   </div>
