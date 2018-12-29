@@ -44,6 +44,9 @@
           PARTII
           button przycisk potwierdzajacy zakonczenie produkcji i
           stworzenie linkow raportow oraz raportow dla poszczegolnych partii
+          <div>
+            <button>Potwierdź wykonanie całej produkcji!</button>
+          </div>
         </div>
       </div>
     </page-data>
