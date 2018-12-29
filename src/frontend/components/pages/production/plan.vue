@@ -20,8 +20,6 @@
         <vue-good-table
           :columns="columns_for_plan"
           :rows="rows_for_plan"></vue-good-table>
-        tabelka
-        półprodukty, jakie ilości posiadamy na stanie magazynowym oraz ilości jakie potrzeba domówić
       </div>
     </page-table>
 
@@ -101,7 +99,7 @@ export default {
           }
         }
         let counter = 0
-        counter = arrayofrecipe[s].quantity_percent * this.howmanykg
+        counter = arrayofrecipe[s].quantity_percent * this.howmanykg / 100
         toorderforproduction = sumforstock - counter
         if (toorderforproduction < 0) toorderforproduction = toorderforproduction * (-1)
         else if (toorderforproduction >= 0) toorderforproduction = 0
