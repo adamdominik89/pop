@@ -81,7 +81,7 @@ module.exports = {
             recipe_1kg: 30
           },
           {
-            ingredients: 'mleko w proszku pełne',
+            ingredients: 'Mleko w proszku pełne',
             quantity_grams: 160,
             quantity_percent: 16,
             recipe_1kg: 160
