@@ -57,7 +57,7 @@
 <script>
 import PageData from '../../templates/page-data'
 import ASelect from '../../atoms/select'
-import {mapGetters} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 
 export default {
   name: 'PProduction-deep',
@@ -115,8 +115,18 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('frontend', ['sort_stock_by_date']),
     count_production () {
       this.doproduction = true
+      let array = this.rows_actual_stock
+      console.log('przed przesortowaniem')
+      console.log(array)
+      console.log('po posortowaniu')
+      // przesortowanie tablicy ze stanem produkcyjnym w storze wg daty przydatnosci do spozycia
+      for (let x = 0; x < this.rows_actual_stock.length; x++) {
+        this.sort_stock_by_date({id: x})
+      }
+      console.log(this.rows_actual_stock)
       console.log('wyliczenie produkcji')
     }
   }

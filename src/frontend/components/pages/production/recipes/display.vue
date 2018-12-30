@@ -7,7 +7,6 @@
         :rows="rows_for_recipe"
         ></vue-good-table>
     </page-table>
-
   </div>
 </template>
 

@@ -117,6 +117,9 @@ export default {
   },
   methods: {
     show_table () {
+
+
+
       this.count = true
     }
   }

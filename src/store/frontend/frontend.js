@@ -36,10 +36,16 @@ module.exports = {
       html: false,
       children: [
         {
+          part_number: '21/01/2018', quantity: 4000, best_before: '2024-10-10', producer: 'mlyn xyz'
+        },
+        {
           part_number: '100/2019', quantity: 550, best_before: '2022-10-12', producer: 'Mlyn tadeusz Rybak'
         },
         {
           part_number: '21/01/2018', quantity: 4000, best_before: '2020-10-10', producer: 'mlyn xyz'
+        },
+        {
+          part_number: '21/01/2018', quantity: 3000, best_before: '2021-10-10', producer: 'mlyn xyz'
         }
       ]
     },
@@ -166,6 +172,11 @@ module.exports = {
           state.rows_actual_stock[i].children.push(obj)
         }
       }
+    },
+    sort_stock_by_date: (state, {id}) => {
+      state.rows_actual_stock[id].children.sort(function (a, b) {
+        return new Date(a.best_before) - new Date(b.best_before)
+      })
     }
   },
   actions: {}
