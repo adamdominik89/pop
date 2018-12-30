@@ -194,7 +194,8 @@ export default {
           batch_numer: lastid,
           production_date: production_date,
           product_name: product_name,
-          quantity_produced: this.how_many_kg_for_single_batch
+          quantity_produced: this.how_many_kg_for_single_batch,
+          id: this.product_name
         }
         array.push(obj)
       }
@@ -255,6 +256,7 @@ export default {
     ...mapMutations('frontend', ['sort_stock_by_date']),
     ...mapMutations('deep', ['add_reports']),
     make_production () {
+      // warunek gdy nie wypelnione pola product name i quantity to nie rob this.doproduction = true
       this.doproduction = true
       let array = this.rows_actual_stock.concat()
       // console.log('przed przesortowaniem')

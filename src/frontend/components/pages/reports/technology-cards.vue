@@ -1,8 +1,12 @@
 <template>
   <div class="o-data-container">
     <page-data title="Karty technologiczne">
-      Lista linków z utworzonymi kartami technologicznymi
-      Numeracja i data utworzenia i nazwy produktów wyprodukowane danego dnia?
+      <div class="a-single-link"
+           v-for="(link, key) in get_reports"
+           :key="key">
+        <router-link
+          :to="{path: path, name: link.name, params: { id: link.id}}">{{link.id}}. {{link.label}}</router-link>
+      </div>
     </page-data>
 
   </div>
@@ -10,11 +14,16 @@
 
 <script>
 import PageData from '../../templates/page-data'
+import {mapGetters} from 'vuex'
 export default {
   name: 'Technology-cards',
   components: {PageData},
   data: () => ({
-  })
+    path: '/'
+  }),
+  computed: {
+    ...mapGetters('deep', ['get_reports']),
+  }
 }
 </script>
 

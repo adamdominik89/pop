@@ -9,6 +9,7 @@ module.exports = {
         produced_kg: 300,
         quantity_closed: 300,
         single_packaging: 1,
+        id: 1,
         ingredients: [],
         // obiekt raportu
         // id
@@ -30,8 +31,10 @@ module.exports = {
           produced_kg: array[i].quantity_produced,
           quantity_closed: array[i].quantity_produced,
           single_packaging: 1,
-          ingredients: array[i].arrayofrows
+          ingredients: array[i].arrayofrows,
+          id: array[i].id
         }
+        // console.log(obj)
         state.reports.push(obj)
       }
     }
