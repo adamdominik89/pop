@@ -172,13 +172,19 @@ export default {
     set_rows () {
       let array = []
       let arrayofsinglerecipe = []
-      let lastid = this.get_reports[this.get_reports.length-1].batch_numer
+      let date = new Date()
+      let dd = date.getDate()
+      let mm = date.getMonth()+1
+      let yyyy = date.getFullYear()
+      let production_date = yyyy + '-' + mm + '-' + dd
+      let lastid = this.get_reports[this.get_reports.length - 1].batch_numer
       for (let i = 0; i < this.count_how_many_batches; i++) {
         lastid++
         let arrayofrows = []
         let obj = {
           arrayofrows: arrayofrows,
-          batch_numer: lastid
+          batch_numer: lastid,
+          production_date: production_date
         }
         array.push(obj)
       }
@@ -205,7 +211,7 @@ export default {
               // znaleziono produkt w storze o takiej samej nazwie
               let done = false
               for (let w = 0; w < this.rows_actual_stock[t].children.length; w++) {
-              // przejscie po calej tablicy dzieci danego półproduktu
+                // przejscie po calej tablicy dzieci danego półproduktu
                 if (this.rows_actual_stock[t].children[w].quantity > quantityperproductforsinglebatch && done === false) {
                   // TODO zliczanie działa jednak teraz musimy jeszcze odjac wartosc ze stora po kazdym odjeciu i rozpatrzyc inne przypadki
                   let object = {
@@ -218,7 +224,6 @@ export default {
                   this.rows_actual_stock[t].children[w].quantity = this.rows_actual_stock[t].children[w].quantity - quantityperproductforsinglebatch
                   done = true
                 } else if (this.rows_actual_stock[t].children[w].quantity < quantityperproductforsinglebatch && done === false) {
-
                   // wynik ile pobierzemy dla danego numeru partii gdy stan na magazynie danej partii jest mniejszy niz
                   // planowana ilość zasypana
                   let objectsmall = {
@@ -227,7 +232,7 @@ export default {
                     best_before: this.rows_actual_stock[t].children[w].best_before,
                     producer: this.rows_actual_stock[t].children[w].producer
                   }
-                  obj.children.push(objectsmall)  // dodanie do tablicy obiektów ten obiekt który jest mniejszy
+                  obj.children.push(objectsmall) // dodanie do tablicy obiektów ten obiekt który jest mniejszy
                   quantityperproductforsinglebatch = quantityperproductforsinglebatch - this.rows_actual_stock[t].children[w].quantity
                   this.rows_actual_stock[t].children[w].quantity = this.rows_actual_stock[t].children[w].quantity - this.rows_actual_stock[t].children[w].quantity
                 }
