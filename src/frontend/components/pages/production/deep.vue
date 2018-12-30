@@ -42,7 +42,7 @@
             Zasyp nr: {{key+1}} Waga całkowita dla zasypu: {{how_many_kg_for_single_batch}} kg
             <vue-good-table
               :columns="columns_for_production"
-              :rows="rows_for_production"
+              :rows="row['arrayofrows']"
               :groupOptions="{enabled: true}"
             ></vue-good-table>
           </div>
@@ -59,7 +59,6 @@
           </div>
         </div>
       </div>
-      {{set_rows}}
     </page-data>
 
   </div>
@@ -179,7 +178,6 @@ export default {
       let arrayofsinglerecipe = []
       for (let i = 0; i < this.count_how_many_batches; i++) {
         let arrayofrows = []
-
         let obj = {
           arrayofrows: arrayofrows
         }
@@ -191,14 +189,19 @@ export default {
         }
       }
       for (let x = 0; x < this.count_how_many_batches; x++) {
-        let arrayofobjects = []
-        let obj = {
-          mode: 'span',
-          label: '',
-          html: false,
-          children: []
+        let label = ''
+        for (let b = 0; b < arrayofsinglerecipe.length; b++) {
+          label = arrayofsinglerecipe[b].ingredients
+          let obj = {
+            mode: 'span',
+            label: label,
+            html: false,
+            children: [{
+              part_number: '21/01/2018', quantity: 4000, best_before: '2024-10-10', producer: 'mlyn xyz'
+            }]
+          }
+          array[x].arrayofrows.push(obj)
         }
-        array[x].arrayofrows.push(x)
       }
       return array
     }
