@@ -15,7 +15,7 @@
                    :min="minimum_value_for_single_batch"/></label>
         </div>
         <div>
-          <button @click="count_production">Przelicz produkcję!</button>
+          <button @click="make_production">Wykonaj produkcję!</button>
         </div>
       </div>
       <div v-if="doproduction === true">
@@ -40,6 +40,7 @@
           <div v-for="(row, key) in set_rows"
                :key="key">
             Zasyp nr: {{key+1}} Waga całkowita dla zasypu: {{how_many_kg_for_single_batch}} kg
+            <div>Numer partii: {{row.batch_numer}}</div>
             <vue-good-table
               :columns="columns_for_production"
               :rows="row['arrayofrows']"
@@ -52,9 +53,6 @@
           PARTII
           button przycisk potwierdzajacy zakonczenie produkcji i
           stworzenie linkow raportow oraz raportow dla poszczegolnych partii
-          <div>
-            <button>Potwierdź wykonanie całej produkcji!</button>
-          </div>
         </div>
       </div>
     </page-data>
@@ -115,6 +113,7 @@ export default {
   computed: {
     ...mapGetters('production', ['get_recipe_links', 'get_rows']),
     ...mapGetters('frontend', ['rows_actual_stock']),
+    ...mapGetters('deep', ['get_reports']),
     get_recipes () {
       let arrayofoptions = []
       let arrayfromstore = this.get_recipe_links
@@ -173,10 +172,13 @@ export default {
     set_rows () {
       let array = []
       let arrayofsinglerecipe = []
+      let lastid = this.get_reports[this.get_reports.length-1].batch_numer
       for (let i = 0; i < this.count_how_many_batches; i++) {
+        lastid++
         let arrayofrows = []
         let obj = {
-          arrayofrows: arrayofrows
+          arrayofrows: arrayofrows,
+          batch_numer: lastid
         }
         array.push(obj)
       }
@@ -241,7 +243,7 @@ export default {
   },
   methods: {
     ...mapMutations('frontend', ['sort_stock_by_date']),
-    count_production () {
+    make_production () {
       this.doproduction = true
       let array = this.rows_actual_stock.concat()
       // console.log('przed przesortowaniem')
@@ -251,6 +253,7 @@ export default {
       for (let x = 0; x < this.rows_actual_stock.length; x++) {
         this.sort_stock_by_date({id: x})
       }
+      console.log(this.set_rows)
       // console.log(this.rows_actual_stock)
       // console.log('wyliczenie produkcji')
     }
