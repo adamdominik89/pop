@@ -39,20 +39,17 @@
         <div v-if="rows_for_plan === true">
           <div v-for="(row, key) in set_rows"
                :key="key">
-            Zasyp nr: {{key+1}} Waga całkowita dla zasypu: {{how_many_kg_for_single_batch}} kg
-            <div>Numer partii: {{row.batch_numer}}</div>
+            <div>
+            Zasyp nr: {{key+1}}
+            </div>
+            <div>Waga całkowita dla zasypu: {{how_many_kg_for_single_batch}} kg</div>
+            <div>Numer partii produkcyjnej: {{row.batch_numer}}</div>
             <vue-good-table
               :columns="columns_for_production"
               :rows="row['arrayofrows']"
               :groupOptions="{enabled: true}"
             ></vue-good-table>
           </div>
-          DLA KAZDEGO ZASYPU
-          PÓŁPRODUKT A DLA NIEGO WIERSZE Z DATA PRZYDATNOSCI DO SPOZYCIA / NUMER PARTII / ORAZ ILOSC W KG DLA KAZDEGO
-          NUMERU
-          PARTII
-          button przycisk potwierdzajacy zakonczenie produkcji i
-          stworzenie linkow raportow oraz raportow dla poszczegolnych partii
         </div>
       </div>
     </page-data>
@@ -174,24 +171,32 @@ export default {
       let arrayofsinglerecipe = []
       let date = new Date()
       let dd = date.getDate()
-      let mm = date.getMonth()+1
+      let mm = date.getMonth() + 1
       let yyyy = date.getFullYear()
       let production_date = yyyy + '-' + mm + '-' + dd
       let lastid = this.get_reports[this.get_reports.length - 1].batch_numer
+      let product_name = ''
+      for (let c = 0; c < this.get_rows.length; c++) {
+        if (this.product_name == this.get_rows[c].product) {
+          arrayofsinglerecipe = this.get_rows[c].array_of_rows // przypisanie tablicy receptury z obiektami półproduktów
+        }
+      }
+      for (let p = 0; p < this.get_recipe_links.length; p++) {
+        if (this.product_name == this.get_recipe_links[p].id) {
+          product_name = this.get_recipe_links[p].label // przypisanie do obiektu w storze nazwy produktu
+        }
+      }
       for (let i = 0; i < this.count_how_many_batches; i++) {
         lastid++
         let arrayofrows = []
         let obj = {
           arrayofrows: arrayofrows,
           batch_numer: lastid,
-          production_date: production_date
+          production_date: production_date,
+          product_name: product_name,
+          quantity_produced: this.how_many_kg_for_single_batch
         }
         array.push(obj)
-      }
-      for (let c = 0; c < this.get_rows.length; c++) {
-        if (this.product_name == this.get_rows[c].product) {
-          arrayofsinglerecipe = this.get_rows[c].array_of_rows // przypisanie tablicy receptury z obiektami półproduktów
-        }
       }
       for (let x = 0; x < this.count_how_many_batches; x++) {
         let label = ''
@@ -207,7 +212,7 @@ export default {
           // wziac półprodukt ze stora
           for (let t = 0; t < this.rows_actual_stock.length; t++) {
             if (this.rows_actual_stock[t].label === label) {
-              console.log(this.rows_actual_stock[t].label)
+              // console.log(this.rows_actual_stock[t].label)
               // znaleziono produkt w storze o takiej samej nazwie
               let done = false
               for (let w = 0; w < this.rows_actual_stock[t].children.length; w++) {
@@ -248,6 +253,7 @@ export default {
   },
   methods: {
     ...mapMutations('frontend', ['sort_stock_by_date']),
+    ...mapMutations('deep', ['add_reports']),
     make_production () {
       this.doproduction = true
       let array = this.rows_actual_stock.concat()
@@ -258,7 +264,8 @@ export default {
       for (let x = 0; x < this.rows_actual_stock.length; x++) {
         this.sort_stock_by_date({id: x})
       }
-      console.log(this.set_rows)
+      // console.log(this.set_rows)
+      this.add_reports({array: this.set_rows})
       // console.log(this.rows_actual_stock)
       // console.log('wyliczenie produkcji')
     }
