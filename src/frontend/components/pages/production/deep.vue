@@ -11,7 +11,8 @@
         <div>
           <label class="a-select-label">
             Wprowadz ilość w kg do produkcji:
-            <input class="a-input-recive-goods" v-model="howmanykg" type="number" :min="minimum_value_for_single_batch"/></label>
+            <input class="a-input-recive-goods" v-model="howmanykg" type="number"
+                   :min="minimum_value_for_single_batch"/></label>
         </div>
         <div>
           <button @click="count_production">Przelicz produkcję!</button>
@@ -37,12 +38,13 @@
         </div>
         <div v-if="rows_for_plan === true">
           <div v-for="(row, key) in set_rows"
-          :key="key">
-          <vue-good-table
-            :columns="columns_for_production"
-            :rows="rows_for_production"
-            :groupOptions="{enabled: true}"
-          ></vue-good-table>
+               :key="key">
+            Zasyp nr: {{key+1}} Waga całkowita dla zasypu: {{how_many_kg_for_single_batch}} kg
+            <vue-good-table
+              :columns="columns_for_production"
+              :rows="rows_for_production"
+              :groupOptions="{enabled: true}"
+            ></vue-good-table>
           </div>
           wyswietlenie tabelek z numerem poszczegolnych zasypów oraz numerów partii produkcyjnych dla poszczególnych
           zasypów.
@@ -57,6 +59,7 @@
           </div>
         </div>
       </div>
+      {{set_rows}}
     </page-data>
 
   </div>
@@ -66,7 +69,7 @@
 import PageData from '../../templates/page-data'
 import ASelect from '../../atoms/select'
 import {mapGetters, mapMutations} from 'vuex'
-import { VueGoodTable } from 'vue-good-table'
+import {VueGoodTable} from 'vue-good-table'
 
 export default {
   name: 'PProduction-deep',
@@ -171,18 +174,31 @@ export default {
       value = this.howmanykg / this.count_how_many_batches
       return value
     },
-    get_rows_for_every_table () {
-      let array = []
-      return array
-    },
     set_rows () {
       let array = []
+      let arrayofsinglerecipe = []
       for (let i = 0; i < this.count_how_many_batches; i++) {
         let arrayofrows = []
+
         let obj = {
           arrayofrows: arrayofrows
         }
         array.push(obj)
+      }
+      for (let c = 0; c < this.get_rows.length; c++) {
+        if (this.product_name == this.get_rows[c].product) {
+          arrayofsinglerecipe = this.get_rows[c].array_of_rows // przypisanie tablicy receptury z obiektami półproduktów
+        }
+      }
+      for (let x = 0; x < this.count_how_many_batches; x++) {
+        let arrayofobjects = []
+        let obj = {
+          mode: 'span',
+          label: '',
+          html: false,
+          children: []
+        }
+        array[x].arrayofrows.push(x)
       }
       return array
     }
