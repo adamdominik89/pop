@@ -213,7 +213,21 @@ export default {
                     producer: this.rows_actual_stock[t].children[w].producer
                   }
                   obj.children.push(object)
+                  this.rows_actual_stock[t].children[w].quantity = this.rows_actual_stock[t].children[w].quantity - quantityperproductforsinglebatch
                   done = true
+                } else if (this.rows_actual_stock[t].children[w].quantity < quantityperproductforsinglebatch && done === false) {
+
+                  // wynik ile pobierzemy dla danego numeru partii gdy stan na magazynie danej partii jest mniejszy niz
+                  // planowana ilość zasypana
+                  let objectsmall = {
+                    part_number: this.rows_actual_stock[t].children[w].part_number,
+                    quantity: this.rows_actual_stock[t].children[w].quantity,
+                    best_before: this.rows_actual_stock[t].children[w].best_before,
+                    producer: this.rows_actual_stock[t].children[w].producer
+                  }
+                  obj.children.push(objectsmall)  // dodanie do tablicy obiektów ten obiekt który jest mniejszy
+                  quantityperproductforsinglebatch = quantityperproductforsinglebatch - this.rows_actual_stock[t].children[w].quantity
+                  this.rows_actual_stock[t].children[w].quantity = this.rows_actual_stock[t].children[w].quantity - this.rows_actual_stock[t].children[w].quantity
                 }
               }
             }

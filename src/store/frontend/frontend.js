@@ -42,10 +42,10 @@ module.exports = {
           part_number: '100/2019', quantity: 550, best_before: '2022-10-12', producer: 'Mlyn tadeusz Rybak'
         },
         {
-          part_number: '21/01/2018', quantity: 4000, best_before: '2020-10-10', producer: 'mlyn xyz'
+          part_number: '21/02/2018', quantity: 4000, best_before: '2020-10-10', producer: 'mlyn xyz'
         },
         {
-          part_number: '21/01/2018', quantity: 3000, best_before: '2021-10-10', producer: 'mlyn xyz'
+          part_number: '21/03/2018', quantity: 3000, best_before: '2021-10-10', producer: 'mlyn Kordesmajer'
         }
       ]
     },
