@@ -36,6 +36,14 @@
           </div>
         </div>
         <div v-if="rows_for_plan === true">
+          <div v-for="(row, key) in set_rows"
+          :key="key">
+          <vue-good-table
+            :columns="columns_for_production"
+            :rows="rows_for_production"
+            :groupOptions="{enabled: true}"
+          ></vue-good-table>
+          </div>
           wyswietlenie tabelek z numerem poszczegolnych zasypów oraz numerów partii produkcyjnych dla poszczególnych
           zasypów.
           DLA KAZDEGO ZASYPU
@@ -49,7 +57,6 @@
           </div>
         </div>
       </div>
-      {{set_rows}}
     </page-data>
 
   </div>
@@ -59,10 +66,11 @@
 import PageData from '../../templates/page-data'
 import ASelect from '../../atoms/select'
 import {mapGetters, mapMutations} from 'vuex'
+import { VueGoodTable } from 'vue-good-table'
 
 export default {
   name: 'PProduction-deep',
-  components: {PageData, ASelect},
+  components: {PageData, ASelect, VueGoodTable},
   data: () => ({
     product_name: '',
     howmanykg: 200,
@@ -86,6 +94,21 @@ export default {
       {
         label: 'Producent',
         field: 'producer'
+      }
+    ],
+    rows_for_production: [
+      {
+        mode: 'span',
+        label: 'Mąka pszenna typ 500',
+        html: false,
+        children: [
+          {
+            part_number: '21/01/2018', quantity: 4000, best_before: '2024-10-10', producer: 'mlyn xyz'
+          },
+          {
+            part_number: '100/2019', quantity: 550, best_before: '2022-10-12', producer: 'Mlyn tadeusz Rybak'
+          }
+        ]
       }
     ]
   }),
@@ -156,7 +179,10 @@ export default {
       let array = []
       for (let i = 0; i < this.count_how_many_batches; i++) {
         let arrayofrows = []
-        array.push(arrayofrows)
+        let obj = {
+          arrayofrows: arrayofrows
+        }
+        array.push(obj)
       }
       return array
     }
