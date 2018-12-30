@@ -128,7 +128,6 @@ export default {
     get_actual_goods () {
       let array = []
       for (let i = 0; i < this.rows_actual_stock.length; i++) {
-        console.log(this.rows_actual_stock[i].label)
         let obj = {
           label: this.rows_actual_stock[i].label,
           value: this.rows_actual_stock[i].label

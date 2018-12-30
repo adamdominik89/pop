@@ -5,9 +5,11 @@ import Stock from '../frontend/components/pages/stock'
 
 import Production from '../frontend/components/pages/production'
 import Deep from '../frontend/components/pages/production/deep'
-import AddNewRecipe from '../frontend/components/pages/production/add-new-recipe'
+import NewRecipe from '../frontend/components/pages/production/new-recipe'
 import Plan from '../frontend/components/pages/production/plan'
 import Recipes from '../frontend/components/pages/production/recipes'
+import Display from '../frontend/components/pages/production/recipes/display'
+import Add from '../frontend/components/pages/production/new-recipe/add'
 
 import Reports from '../frontend/components/pages/reports'
 import TechnologyCards from '../frontend/components/pages/reports/technology-cards'
@@ -15,10 +17,9 @@ import TechnologyCards from '../frontend/components/pages/reports/technology-car
 import ActualStock from '../frontend/components/pages/stock/actual_stock'
 import ReciveGoods from '../frontend/components/pages/stock/recive_goods'
 
-
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -26,10 +27,16 @@ export default new Router({
       component: main
     },
     {
+      path: '/production/recipes/display',
+      component: Display,
+      name: 'display',
+      props: true
+
+    },
+    {
       path: '/stock',
       name: 'stock',
       component: Stock
-
     },
     {
       path: '/production',
@@ -47,9 +54,14 @@ export default new Router({
       component: Recipes
     },
     {
+      path: '/production/new-recipe/add',
+      name: 'add',
+      component: Add
+    },
+    {
       path: '/production/add_new_recipe',
       name: 'add_new_recipe',
-      component: AddNewRecipe
+      component: NewRecipe
     },
     {
       path: '/production/plan',
@@ -75,6 +87,15 @@ export default new Router({
       path: '/stock/recive_goods',
       name: 'recive_goods',
       component: ReciveGoods
-    },
+    }
   ]
 })
+router.beforeEach((to, from, next) => {
+  // console.log(to)
+  if (to.fullPath === '/production/recipes/display') {
+    // console.log('tutaj nalezy umiescic funkcje ktora bedzie czyscic kolumny w storze i tworzyc kolumny oraz wiersze')
+  }
+  // zeby dodac nowy link to trzeba wywoalcc metode router.addRoutes
+  next()
+})
+export default router

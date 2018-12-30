@@ -43,7 +43,6 @@ export default {
   }),
   methods: {
     go_to (link) {
-      console.log(link)
       this.$router.push(link)
     }
   }

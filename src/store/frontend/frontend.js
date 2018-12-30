@@ -36,10 +36,16 @@ module.exports = {
       html: false,
       children: [
         {
+          part_number: '21/01/2018', quantity: 4000, best_before: '2024-10-10', producer: 'mlyn xyz'
+        },
+        {
           part_number: '100/2019', quantity: 550, best_before: '2022-10-12', producer: 'Mlyn tadeusz Rybak'
         },
         {
-          part_number: '21/01/2018', quantity: 4000, best_before: '2020-10-10', producer: 'mlyn xyz'
+          part_number: '21/02/2018', quantity: 4000, best_before: '2020-10-10', producer: 'mlyn xyz'
+        },
+        {
+          part_number: '21/03/2018', quantity: 3000, best_before: '2021-10-10', producer: 'mlyn Kordesmajer'
         }
       ]
     },
@@ -65,7 +71,74 @@ module.exports = {
           part_number: '20-02-2024', quantity: 6550, best_before: '2021-09-25', producer: 'Peppes sp. z o.o.'
         }
       ]
-    }]
+    },
+    {
+      mode: 'span',
+      label: 'Proszek do pieczenia',
+      html: false,
+      children: [
+        {
+          part_number: 'AA1/2019', quantity: 500, best_before: '2022-12-30', producer: 'Producent X'
+        },
+        {
+          part_number: 'BB2/03/2018', quantity: 800, best_before: '2023-11-20', producer: 'Producent Y'
+        }
+      ]
+    },
+    {
+      mode: 'span',
+      label: 'Kakao 22%',
+      html: false,
+      children: [
+        {
+          part_number: '10D/2017', quantity: 5400, best_before: '2023-12-30', producer: 'Producent Kakao X'
+        },
+        {
+          part_number: 'B2/03/2018', quantity: 800, best_before: '2023-04-03', producer: 'Producent Kakao Z'
+        }
+      ]
+    },
+    {
+      mode: 'span',
+      label: 'Aromat waniliowy 200407K',
+      html: false,
+      children: [
+        {
+          part_number: '200C', quantity: 200, best_before: '2021-12-30', producer: 'Ipra'
+        },
+        {
+          part_number: '300C', quantity: 100, best_before: '2023-04-03', producer: 'Ipra'
+        }
+      ]
+    },
+    {
+      mode: 'span',
+      label: 'Naturalny proszek cytrynowy',
+      html: false,
+      children: [
+        {
+          part_number: '700A', quantity: 200, best_before: '2021-12-30', producer: 'Elena'
+        },
+        {
+          part_number: '200B', quantity: 100, best_before: '2023-04-03', producer: 'Liogam'
+        }
+      ]
+    },
+    {
+      mode: 'span',
+      label: 'Mleko w proszku pełne',
+      html: false,
+      children: [
+        {
+          part_number: 'AAA', quantity: 2500, best_before: '2020-12-30', producer: 'Mleczarnia Mlekovita'
+        },
+        {
+          part_number: 'CCC', quantity: 3000, best_before: '2019-04-03', producer: 'Zakład mleczarski Śnieżka'
+        }
+      ]
+    }
+
+    ]
 
   },
   getters: {
@@ -88,7 +161,6 @@ module.exports = {
       state.rows_actual_stock.push(obj)
     },
     update_existing_stock: (state, {productname, partnumber, quantity, bestbefore, producer}) => {
-      let product_name = productname
       for (let i = 0; i < state.rows_actual_stock.length; i++) {
         if (state.rows_actual_stock[i].label === productname) {
           let obj = {
@@ -100,8 +172,12 @@ module.exports = {
           state.rows_actual_stock[i].children.push(obj)
         }
       }
+    },
+    sort_stock_by_date: (state, {id}) => {
+      state.rows_actual_stock[id].children.sort(function (a, b) {
+        return new Date(a.best_before) - new Date(b.best_before)
+      })
     }
   },
-  actions: {
-  }
+  actions: {}
 }
