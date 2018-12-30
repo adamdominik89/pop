@@ -49,6 +49,7 @@
           </div>
         </div>
       </div>
+      {{set_rows}}
     </page-data>
 
   </div>
@@ -68,7 +69,25 @@ export default {
     doproduction: false,
     productionispossible: true,
     maximumvalueformachine: 400,
-    minimum_value_for_single_batch: 200
+    minimum_value_for_single_batch: 200,
+    columns_for_production: [
+      {
+        label: 'Numer partii',
+        field: 'part_number'
+      },
+      {
+        label: 'Ilość w [kg]',
+        field: 'quantity'
+      },
+      {
+        label: 'Data przydatności do spożycia',
+        field: 'best_before'
+      },
+      {
+        label: 'Producent',
+        field: 'producer'
+      }
+    ]
   }),
   computed: {
     ...mapGetters('production', ['get_recipe_links', 'get_rows']),
@@ -131,6 +150,14 @@ export default {
     },
     get_rows_for_every_table () {
       let array = []
+      return array
+    },
+    set_rows () {
+      let array = []
+      for (let i = 0; i < this.count_how_many_batches; i++) {
+        let arrayofrows = []
+        array.push(arrayofrows)
+      }
       return array
     }
   },
