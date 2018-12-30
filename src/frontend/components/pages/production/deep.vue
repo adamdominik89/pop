@@ -46,8 +46,6 @@
               :groupOptions="{enabled: true}"
             ></vue-good-table>
           </div>
-          wyswietlenie tabelek z numerem poszczegolnych zasypów oraz numerów partii produkcyjnych dla poszczególnych
-          zasypów.
           DLA KAZDEGO ZASYPU
           PÓŁPRODUKT A DLA NIEGO WIERSZE Z DATA PRZYDATNOSCI DO SPOZYCIA / NUMER PARTII / ORAZ ILOSC W KG DLA KAZDEGO
           NUMERU
@@ -165,7 +163,6 @@ export default {
       } else {
         value = this.howmanykg / this.maximumvalueformachine
       }
-      console.log(value)
       return value
     },
     how_many_kg_for_single_batch () {
@@ -196,10 +193,32 @@ export default {
             mode: 'span',
             label: label,
             html: false,
-            children: [{
-              part_number: '21/01/2018', quantity: 4000, best_before: '2024-10-10', producer: 'mlyn xyz'
-            }]
+            children: []
           }
+          let quantityperproductforsinglebatch = (arrayofsinglerecipe[b].quantity_percent * this.how_many_kg_for_single_batch) / 100
+          // wziac półprodukt ze stora
+          for (let t = 0; t < this.rows_actual_stock.length; t++) {
+            if (this.rows_actual_stock[t].label === label) {
+              console.log(this.rows_actual_stock[t].label)
+              // znaleziono produkt w storze o takiej samej nazwie
+              let done = false
+              for (let w = 0; w < this.rows_actual_stock[t].children.length; w++) {
+              // przejscie po calej tablicy dzieci danego półproduktu
+                if (this.rows_actual_stock[t].children[w].quantity > quantityperproductforsinglebatch && done === false) {
+                  // TODO zliczanie działa jednak teraz musimy jeszcze odjac wartosc ze stora po kazdym odjeciu i rozpatrzyc inne przypadki
+                  let object = {
+                    part_number: this.rows_actual_stock[t].children[w].part_number,
+                    quantity: quantityperproductforsinglebatch,
+                    best_before: this.rows_actual_stock[t].children[w].best_before,
+                    producer: this.rows_actual_stock[t].children[w].producer
+                  }
+                  obj.children.push(object)
+                  done = true
+                }
+              }
+            }
+          }
+
           array[x].arrayofrows.push(obj)
         }
       }
