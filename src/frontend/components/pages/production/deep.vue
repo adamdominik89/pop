@@ -11,7 +11,7 @@
         <div>
           <label class="a-select-label">
             Wprowadz ilość w kg do produkcji:
-            <input class="a-input-recive-goods" v-model="howmanykg" type="number" min="1"/></label>
+            <input class="a-input-recive-goods" v-model="howmanykg" type="number" :min="minimum_value_for_single_batch"/></label>
         </div>
         <div>
           <button @click="count_production">Przelicz produkcję!</button>
@@ -64,10 +64,11 @@ export default {
   components: {PageData, ASelect},
   data: () => ({
     product_name: '',
-    howmanykg: 1,
+    howmanykg: 200,
     doproduction: false,
     productionispossible: true,
-    maximumvalueformachine: 400
+    maximumvalueformachine: 400,
+    minimum_value_for_single_batch: 200
   }),
   computed: {
     ...mapGetters('production', ['get_recipe_links', 'get_rows']),
@@ -112,22 +113,41 @@ export default {
         sumforstock = 0
       }
       return value
+    },
+    count_how_many_batches () { // liczy ile na daną ilość zadaną trzeba wykonać mieszalników
+      let value = 0
+      if (this.howmanykg % this.maximumvalueformachine > 0) {
+        value = parseInt(this.howmanykg / this.maximumvalueformachine + 1)
+      } else {
+        value = this.howmanykg / this.maximumvalueformachine
+      }
+      console.log(value)
+      return value
+    },
+    how_many_kg_for_single_batch () {
+      let value = 0
+      value = this.howmanykg / this.count_how_many_batches
+      return value
+    },
+    get_rows_for_every_table () {
+      let array = []
+      return array
     }
   },
   methods: {
     ...mapMutations('frontend', ['sort_stock_by_date']),
     count_production () {
       this.doproduction = true
-      let array = this.rows_actual_stock
-      console.log('przed przesortowaniem')
-      console.log(array)
-      console.log('po posortowaniu')
+      let array = this.rows_actual_stock.concat()
+      // console.log('przed przesortowaniem')
+      // console.log(array)
+      // console.log('po posortowaniu')
       // przesortowanie tablicy ze stanem produkcyjnym w storze wg daty przydatnosci do spozycia
       for (let x = 0; x < this.rows_actual_stock.length; x++) {
         this.sort_stock_by_date({id: x})
       }
-      console.log(this.rows_actual_stock)
-      console.log('wyliczenie produkcji')
+      // console.log(this.rows_actual_stock)
+      // console.log('wyliczenie produkcji')
     }
   }
 }
