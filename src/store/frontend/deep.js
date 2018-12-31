@@ -34,7 +34,7 @@ module.exports = {
           ingredients: array[i].arrayofrows,
           id: array[i].id
         }
-        // console.log(obj)
+        console.log(obj)
         state.reports.push(obj)
       }
     }

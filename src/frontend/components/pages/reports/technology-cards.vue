@@ -5,7 +5,9 @@
            v-for="(link, key) in get_reports"
            :key="key">
         <router-link
-          :to="{path: path, name: link.name, params: { id: link.id}}">{{link.id}}. {{link.label}}</router-link>
+          :to="{path: path, name: link.name, params: { link: link}}">
+          {{link.id}}. {{link.product_name}} / Data produkcji: {{link.production_date}} / Ilość w kg: {{link.produced_kg}}
+        </router-link>
       </div>
     </page-data>
 
@@ -23,6 +25,13 @@ export default {
   }),
   computed: {
     ...mapGetters('deep', ['get_reports']),
+    get_number () {
+      let number = 1
+      for (let i = 0; i < this.get_reports.length; i++) {
+
+      }
+      return number
+    }
   }
 }
 </script>

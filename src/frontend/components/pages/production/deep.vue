@@ -195,7 +195,7 @@ export default {
           production_date: production_date,
           product_name: product_name,
           quantity_produced: this.how_many_kg_for_single_batch,
-          id: this.product_name
+          id: lastid
         }
         array.push(obj)
       }

@@ -10,6 +10,7 @@ import PageData from '../../../templates/page-data'
 export default {
   name: 'display',
   components: {PageData},
+  props: ['link'],
   data: () => ({
   }),
   mutations: {
