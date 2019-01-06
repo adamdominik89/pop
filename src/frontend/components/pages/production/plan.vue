@@ -44,11 +44,11 @@ export default {
       field: 'products'
     },
     {
-      label: 'Ilości w stanie magazynowym',
+      label: 'Ilości w stanie magazynowym [kg]',
       field: 'actualstock'
     },
     {
-      label: 'Produkty do zamówienia',
+      label: 'Produkty do zamówienia [kg]',
       field: 'toorder'
     }
     ]
