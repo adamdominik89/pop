@@ -115,7 +115,6 @@ module.exports = {
   },
   mutations: {
     add_new_link: (state, {newlink}) => {
-      console.log(newlink)
       state.recipe_links.push(newlink)
     },
     add_rows_for_single_recipe: (state, {id, arraytostore}) => {
