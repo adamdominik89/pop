@@ -1,22 +1,34 @@
 <template>
   <div id="app">
-    <div class="o-buttons">
-      <div class="a-button-container">
+    <div class="o-buttons" v-if="is_logged === true">
+      <div class="a-button-container"
+           v-show="is_logged === true">
         <button class="a-button" @click="go_to_stock">TOWARY</button>
       </div>
-      <div class="a-button-container" @click="go_to_production">
-        <button class="a-button">PRODUKCJA</button>
+      <div class="a-button-container"
+           v-show="is_logged === true"
+      >
+        <button class="a-button"
+                @click="go_to_production">PRODUKCJA
+        </button>
       </div>
-      <div class="a-button-container">
-        <button class="a-button" @click="go_to_reports">RAPORTY</button>
+      <div class="a-button-container"
+           v-show="is_logged === true">
+        <button
+          class="a-button"
+          @click="go_to_reports">RAPORTY
+        </button>
       </div>
-
+    </div>
+    <div
+      v-if="is_logged === false">
+      Program Optymalizujący proces produkcyjny
     </div>
     <div v-if="is_logged === true">
-    <div class="a-user-container">
-      Witaj: {{user}};
-      <router-link to="/" @click.native="logout">{{log_out}}</router-link>
-    </div>
+      <div class="a-user-container">
+        Witaj: {{user}};
+        <router-link to="/" @click.native="logout">{{log_out}}</router-link>
+      </div>
     </div>
     <router-view/>
   </div>

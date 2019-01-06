@@ -1,7 +1,8 @@
 <template>
   <div class="o-data-container">
     <page-data title="Produkcja">
-      <div class="a-button-container f-single"
+      <div
+        class="a-button-container f-single"
            v-for="(link, key) in links"
           :key="key"
       >
@@ -17,6 +18,7 @@
 
 <script>
 import PageData from '../templates/page-data'
+import {mapGetters} from 'vuex'
 export default {
   name: 'Stock',
   components: {PageData},
@@ -41,6 +43,9 @@ export default {
     ]
 
   }),
+  computed: {
+    ...mapGetters('frontend', ['is_logged'])
+  },
   methods: {
     go_to (link) {
       this.$router.push(link)
