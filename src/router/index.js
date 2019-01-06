@@ -16,6 +16,7 @@ import TechnologyCards from '../frontend/components/pages/reports/technology-car
 
 import ActualStock from '../frontend/components/pages/stock/actual_stock'
 import ReciveGoods from '../frontend/components/pages/stock/recive_goods'
+import store from '../store/index'
 
 Vue.use(Router)
 
@@ -91,7 +92,13 @@ const router = new Router({
   ]
 })
 router.beforeEach((to, from, next) => {
-  // console.log(to)
+  console.log(to)
+  if (store.getters['frontend/is_logged'] === true) {
+    console.log('wyslij teraz na strone towarow')
+  } else if (store.getters['frontend/is_logged'] === false) {
+    console.log('wyslij na strone logowania')
+  }
+  // console.log(this.a.app.$store)
   if (to.fullPath === '/production/recipes/display') {
     // console.log('tutaj nalezy umiescic funkcje ktora bedzie czyscic kolumny w storze i tworzyc kolumny oraz wiersze')
   }
