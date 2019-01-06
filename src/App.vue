@@ -12,29 +12,31 @@
       </div>
 
     </div>
+    <div v-if="is_logged === true">
     <div class="a-user-container">
-      Witaj: {{user}}
-      <router-link to="/">{{log_out}}</router-link>
-      {{is_logged}}
+      Witaj: {{user}};
+      <router-link to="/" @click.native="logout">{{log_out}}</router-link>
+    </div>
     </div>
     <router-view/>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 
 export default {
   name: 'App',
   data: () => ({
     user: 'Adam',
-    log_out: 'wyloguj'
+    log_out: 'Wyloguj się'
 
   }),
   computed: {
-    ...mapState('frontend', ['is_logged'])
+    ...mapGetters('frontend', ['is_logged'])
   },
   methods: {
+    ...mapMutations('frontend', ['set_login_status']),
     go_to_stock () {
       this.$router.push('/stock')
     },
@@ -43,6 +45,10 @@ export default {
     },
     go_to_reports () {
       this.$router.push('/reports')
+    },
+    logout () {
+      console.log('dupa')
+      this.set_login_status(false)
     }
   }
 }
