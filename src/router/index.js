@@ -13,6 +13,7 @@ import Add from '../frontend/components/pages/production/new-recipe/add'
 
 import Reports from '../frontend/components/pages/reports'
 import TechnologyCards from '../frontend/components/pages/reports/technology-cards'
+import TechnologyCard from '../frontend/components/pages/reports/technology-cards/single'
 
 import ActualStock from '../frontend/components/pages/stock/actual_stock'
 import ReciveGoods from '../frontend/components/pages/stock/recive_goods'
@@ -77,6 +78,12 @@ const router = new Router({
       path: '/reports/technology_cards',
       name: 'technology_cards',
       component: TechnologyCards
+    },
+    {
+      path: '/reports/technology_card',
+      name: 'technology_card',
+      component: TechnologyCard,
+      props: true
     },
     {
       path: '/stock/actual_stock',

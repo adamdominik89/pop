@@ -5,7 +5,7 @@
            v-for="(link, key) in get_reports"
            :key="key">
         <router-link
-          :to="{path: path, name: link.name, params: { link: link}}">
+          :to="{path: path, name: name, params: { link: link}}">
           {{link.id}}. {{link.product_name}} / Data produkcji: {{link.production_date}} / Ilość w kg: {{link.produced_kg}}
         </router-link>
       </div>
@@ -21,14 +21,14 @@ export default {
   name: 'Technology-cards',
   components: {PageData},
   data: () => ({
-    path: '/'
+    path: '/reports/technology_card',
+    name: 'technology_card'
   }),
   computed: {
     ...mapGetters('deep', ['get_reports']),
     get_number () {
       let number = 1
       for (let i = 0; i < this.get_reports.length; i++) {
-
       }
       return number
     }

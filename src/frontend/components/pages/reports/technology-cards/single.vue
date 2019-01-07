@@ -1,20 +1,24 @@
 <template>
   <div class="o-data-container">
     <page-data title="Karta technologiczna">
+      <div>Karta technologiczna</div>
+      <div>Nazwa produktu: {{link}}</div>
     </page-data>
   </div>
 </template>
 
 <script>
 import PageData from '../../../templates/page-data'
+
 export default {
-  name: 'display',
+  name: 'single',
   components: {PageData},
   props: ['link'],
-  data: () => ({
-  }),
-  mutations: {
-  }
+  mounted () {
+    console.log(this.link)
+  },
+  data: () => ({}),
+  mutations: {}
 }
 </script>
 

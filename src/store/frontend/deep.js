@@ -19,7 +19,7 @@ module.exports = {
     ],
   },
   getters: {
-    get_reports: state => state.reports,
+    get_reports: state => state.reports
   },
   mutations: {
     add_reports: (state, {array}) => {
