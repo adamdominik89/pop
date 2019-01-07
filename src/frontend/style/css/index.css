@@ -134,6 +134,16 @@
   text-align: center;
   padding-right: 50px; }
 
+.p-name {
+  width: 100%;
+  text-align: center; }
+
+.p-name-deep {
+  display: block; }
+
+.p-stock-input-container {
+  display: inline-block; }
+
 body {
   background: lightgray; }
 

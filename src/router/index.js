@@ -32,7 +32,6 @@ const router = new Router({
       component: Display,
       name: 'display',
       props: true
-
     },
     {
       path: '/stock',
@@ -92,17 +91,15 @@ const router = new Router({
   ]
 })
 router.beforeEach((to, from, next) => {
-  console.log(to)
-  if (store.getters['frontend/is_logged'] === true) {
-    console.log('wyslij teraz na strone towarow')
-  } else if (store.getters['frontend/is_logged'] === false) {
-    console.log('wyslij na strone logowania')
+  if (store.getters['frontend/is_logged'] === true && to.fullPath === '/') {
+    next('/stock')
+  } else if (store.getters['frontend/is_logged'] === false && to.fullPath !== '/') {
+    router.push('/')
   }
   // console.log(this.a.app.$store)
   if (to.fullPath === '/production/recipes/display') {
     // console.log('tutaj nalezy umiescic funkcje ktora bedzie czyscic kolumny w storze i tworzyc kolumny oraz wiersze')
   }
-  // zeby dodac nowy link to trzeba wywoalcc metode router.addRoutes
   next()
 })
 export default router

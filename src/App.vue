@@ -21,6 +21,7 @@
       </div>
     </div>
     <div
+      class="p-name"
       v-if="is_logged === false">
       Program Optymalizujący proces produkcyjny
     </div>
