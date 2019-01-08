@@ -1,40 +1,55 @@
 <template>
   <div id="app">
-    <div class="o-buttons">
-      <div class="a-button-container">
+    <div class="o-buttons" v-if="is_logged === true">
+      <div class="a-button-container"
+           v-show="is_logged === true">
         <button class="a-button" @click="go_to_stock">TOWARY</button>
       </div>
-      <div class="a-button-container" @click="go_to_production">
-        <button class="a-button">PRODUKCJA</button>
+      <div class="a-button-container"
+           v-show="is_logged === true"
+      >
+        <button class="a-button"
+                @click="go_to_production">PRODUKCJA
+        </button>
       </div>
-      <div class="a-button-container">
-        <button class="a-button" @click="go_to_reports">RAPORTY</button>
+      <div class="a-button-container"
+           v-show="is_logged === true">
+        <button
+          class="a-button"
+          @click="go_to_reports">RAPORTY
+        </button>
       </div>
-
     </div>
-    <div class="a-user-container">
-      Witaj: {{user}}
-      <router-link to="/">{{log_out}}</router-link>
-      {{is_logged}}
+    <div
+      class="p-name"
+      v-if="is_logged === false">
+      Program Optymalizujący proces produkcyjny
+    </div>
+    <div v-if="is_logged === true">
+      <div class="a-user-container">
+        Witaj: {{get_actual_user}};
+        <router-link to="/" @click.native="logout">{{log_out}}</router-link>
+      </div>
     </div>
     <router-view/>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 
 export default {
   name: 'App',
   data: () => ({
     user: 'Adam',
-    log_out: 'wyloguj'
+    log_out: 'Wyloguj się'
 
   }),
   computed: {
-    ...mapState('frontend', ['is_logged'])
+    ...mapGetters('frontend', ['is_logged', 'get_actual_user'])
   },
   methods: {
+    ...mapMutations('frontend', ['set_login_status']),
     go_to_stock () {
       this.$router.push('/stock')
     },
@@ -43,6 +58,9 @@ export default {
     },
     go_to_reports () {
       this.$router.push('/reports')
+    },
+    logout () {
+      this.set_login_status(false)
     }
   }
 }

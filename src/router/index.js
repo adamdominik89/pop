@@ -13,9 +13,11 @@ import Add from '../frontend/components/pages/production/new-recipe/add'
 
 import Reports from '../frontend/components/pages/reports'
 import TechnologyCards from '../frontend/components/pages/reports/technology-cards'
+import TechnologyCard from '../frontend/components/pages/reports/technology-cards/single'
 
 import ActualStock from '../frontend/components/pages/stock/actual_stock'
 import ReciveGoods from '../frontend/components/pages/stock/recive_goods'
+import store from '../store/index'
 
 Vue.use(Router)
 
@@ -31,7 +33,6 @@ const router = new Router({
       component: Display,
       name: 'display',
       props: true
-
     },
     {
       path: '/stock',
@@ -79,6 +80,12 @@ const router = new Router({
       component: TechnologyCards
     },
     {
+      path: '/reports/technology_card',
+      name: 'technology_card',
+      component: TechnologyCard,
+      props: true
+    },
+    {
       path: '/stock/actual_stock',
       name: 'actual_stock',
       component: ActualStock
@@ -91,11 +98,15 @@ const router = new Router({
   ]
 })
 router.beforeEach((to, from, next) => {
-  // console.log(to)
+  if (store.getters['frontend/is_logged'] === true && to.fullPath === '/') {
+    next('/stock')
+  } else if (store.getters['frontend/is_logged'] === false && to.fullPath !== '/') {
+    router.push('/')
+  }
+  // console.log(this.a.app.$store)
   if (to.fullPath === '/production/recipes/display') {
     // console.log('tutaj nalezy umiescic funkcje ktora bedzie czyscic kolumny w storze i tworzyc kolumny oraz wiersze')
   }
-  // zeby dodac nowy link to trzeba wywoalcc metode router.addRoutes
   next()
 })
 export default router

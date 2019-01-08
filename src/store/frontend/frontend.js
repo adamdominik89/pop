@@ -3,6 +3,13 @@ module.exports = {
   state: {
     is_logged: false,
     recive_option: 0,
+    actual_user: '',
+    log_data: [
+      {
+        login: 'admin',
+        passw: 'admin'
+      }
+    ],
     recive_options: [
       {
         label: 'Istniejącego towaru',
@@ -145,9 +152,18 @@ module.exports = {
     columns_actual_stock: state => state.columns_actual_stock,
     rows_actual_stock: state => state.rows_actual_stock,
     get_recive_options: state => state.recive_options,
-    get_actual_recive_option: state => state.recive_option
+    get_actual_recive_option: state => state.recive_option,
+    get_log_data: state => state.log_data,
+    is_logged: state => state.is_logged,
+    get_actual_user: state => state.actual_user
   },
   mutations: {
+    set_actual_user: (state, payload) => {
+      state.actual_user = payload
+    },
+    set_login_status: (state, payload) => {
+      state.is_logged = payload
+    },
     update_recive_option: (state, payload) => {
       state.recive_option = payload
     },
