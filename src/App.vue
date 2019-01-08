@@ -27,7 +27,7 @@
     </div>
     <div v-if="is_logged === true">
       <div class="a-user-container">
-        Witaj: {{user}};
+        Witaj: {{get_actual_user}};
         <router-link to="/" @click.native="logout">{{log_out}}</router-link>
       </div>
     </div>
@@ -46,7 +46,7 @@ export default {
 
   }),
   computed: {
-    ...mapGetters('frontend', ['is_logged'])
+    ...mapGetters('frontend', ['is_logged', 'get_actual_user'])
   },
   methods: {
     ...mapMutations('frontend', ['set_login_status']),
@@ -60,7 +60,6 @@ export default {
       this.$router.push('/reports')
     },
     logout () {
-      console.log('dupa')
       this.set_login_status(false)
     }
   }

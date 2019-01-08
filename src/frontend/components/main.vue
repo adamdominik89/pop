@@ -47,7 +47,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations('frontend', ['set_login_status']),
+    ...mapMutations('frontend', ['set_login_status', 'set_actual_user']),
     log_in () {
       // kontrola loginu i hasla
       let correctlogin = false
@@ -56,6 +56,7 @@ export default {
           this.get_log_data[i].passw === this.passw) {
           correctlogin = true
           this.set_login_status(true)
+          this.set_actual_user(this.login)
         }
       }
       if (correctlogin === true) {
